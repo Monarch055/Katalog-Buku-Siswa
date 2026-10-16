@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="300" height="450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C4A6E" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+    <linearGradient id="spineShadow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.4" />
+      <stop offset="25%" stop-color="#fff" stop-opacity="0.12" />
+      <stop offset="50%" stop-color="#000" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="goldAcc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#BAE6FD" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="300" height="450" rx="6" fill="url(#bgGrad)" />
+
+  <!-- Subtle Texture Pattern Grid -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="90" x2="300" y2="90" />
+    <line x1="0" y1="180" x2="300" y2="180" />
+    <line x1="0" y1="270" x2="300" y2="270" />
+    <line x1="0" y1="360" x2="300" y2="360" />
+    <line x1="75" y1="0" x2="75" y2="450" />
+    <line x1="150" y1="0" x2="150" y2="450" />
+    <line x1="225" y1="0" x2="225" y2="450" />
+  </g>
+
+  <!-- Category Pill Badge -->
+  <g transform="translate(26, 32)">
+    <rect width="144" height="22" rx="11" fill="#38BDF8" fill-opacity="0.22" stroke="#38BDF8" stroke-width="1" />
+    <text x="12" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#BAE6FD" letter-spacing="0.5">SEJARAH & SOSIAL</text>
+  </g>
+
+  <!-- Book Title -->
+  <g transform="translate(26, 85)">
+    
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="-0.3">
+        Geografi:
+      </text>
+    
+      <text x="0" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="-0.3">
+        Lingkungan Hidup
+      </text>
+    
+      <text x="0" y="52" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="-0.3">
+        dan Mitigasi
+      </text>
+    
+  </g>
+
+  <!-- Author Name -->
+  <g transform="translate(26, 171)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#BAE6FD">
+      Gatot Harmanto
+    </text>
+  </g>
+
+  <!-- Center Decorative Illustration -->
+  <g color="#BAE6FD">
+    
+    <g transform="translate(150, 240)" stroke="currentColor" fill="none" stroke-width="2.5" opacity="0.85">
+      <circle cx="0" cy="0" r="38" stroke-width="3"/>
+      <ellipse cx="0" cy="0" rx="20" ry="38"/>
+      <line x1="-38" y1="0" x2="38" y2="0"/>
+      <line x1="-32" y1="-18" x2="32" y2="-18" stroke-width="1.5"/>
+      <line x1="-32" y1="18" x2="32" y2="18" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <!-- Bottom Accent Separator -->
+  <line x1="26" y1="388" x2="274" y2="388" stroke="url(#goldAcc)" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Footer Info -->
+  <g transform="translate(26, 408)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#94A3B8">
+      PERPUSTAKAAN SMAN 1 SEKAYAM
+    </text>
+    <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="500" fill="#64748B">
+      Yrama Widya • 2020
+    </text>
+  </g>
+
+  <!-- Shelf Code Tag (Top Right) -->
+  <g transform="translate(216, 32)">
+    <rect width="58" height="22" rx="4" fill="#000000" fill-opacity="0.35" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1"/>
+    <text x="29" y="15" text-anchor="middle" font-family="monospace" font-size="10.5" font-weight="bold" fill="#F1F5F9">
+      D-02
+    </text>
+  </g>
+
+  <!-- 3D Book Spine Effect (Left Edge) -->
+  <rect x="0" y="0" width="16" height="450" fill="url(#spineShadow)" rx="6 0 0 6"/>
+  <line x1="16" y1="0" x2="16" y2="450" stroke="#000" stroke-opacity="0.2" stroke-width="1"/>
+</svg>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="300" height="450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#022C22" />
+      <stop offset="100%" stop-color="#064E3B" />
+    </linearGradient>
+    <linearGradient id="spineShadow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.4" />
+      <stop offset="25%" stop-color="#fff" stop-opacity="0.12" />
+      <stop offset="50%" stop-color="#000" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="goldAcc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#99F6E4" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="300" height="450" rx="6" fill="url(#bgGrad)" />
+
+  <!-- Subtle Texture Pattern Grid -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="90" x2="300" y2="90" />
+    <line x1="0" y1="180" x2="300" y2="180" />
+    <line x1="0" y1="270" x2="300" y2="270" />
+    <line x1="0" y1="360" x2="300" y2="360" />
+    <line x1="75" y1="0" x2="75" y2="450" />
+    <line x1="150" y1="0" x2="150" y2="450" />
+    <line x1="225" y1="0" x2="225" y2="450" />
+  </g>
+
+  <!-- Category Pill Badge -->
+  <g transform="translate(26, 32)">
+    <rect width="151.5" height="22" rx="11" fill="#2DD4BF" fill-opacity="0.22" stroke="#2DD4BF" stroke-width="1" />
+    <text x="12" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#99F6E4" letter-spacing="0.5">SAINS & TEKNOLOGI</text>
+  </g>
+
+  <!-- Book Title -->
+  <g transform="translate(26, 85)">
+    
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="-0.3">
+        Informatika untuk
+      </text>
+    
+      <text x="0" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" letter-spacing="-0.3">
+        SMA/MA Kelas X
+      </text>
+    
+  </g>
+
+  <!-- Author Name -->
+  <g transform="translate(26, 145)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#99F6E4">
+      Mushthofa
+    </text>
+  </g>
+
+  <!-- Center Decorative Illustration -->
+  <g color="#99F6E4">
+    
+    <g transform="translate(150, 240)" stroke="currentColor" fill="none" stroke-width="3" opacity="0.85">
+      <path d="M-26,-20 L-40,0 L-26,20"/>
+      <path d="M26,-20 L40,0 L26,20"/>
+      <line x1="8" y1="-26" x2="-8" y2="26" stroke-width="2.5"/>
+      <circle cx="-16" cy="0" r="2.5" fill="currentColor"/>
+      <circle cx="16" cy="0" r="2.5" fill="currentColor"/>
+    </g>
+  </g>
+
+  <!-- Bottom Accent Separator -->
+  <line x1="26" y1="388" x2="274" y2="388" stroke="url(#goldAcc)" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Footer Info -->
+  <g transform="translate(26, 408)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#94A3B8">
+      PERPUSTAKAAN SMAN 1 SEKAYAM
+    </text>
+    <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="500" fill="#64748B">
+      Kemendikbudristek • 2021
+    </text>
+  </g>
+
+  <!-- Shelf Code Tag (Top Right) -->
+  <g transform="translate(216, 32)">
+    <rect width="58" height="22" rx="4" fill="#000000" fill-opacity="0.35" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1"/>
+    <text x="29" y="15" text-anchor="middle" font-family="monospace" font-size="10.5" font-weight="bold" fill="#F1F5F9">
+      C-03
+    </text>
+  </g>
+
+  <!-- 3D Book Spine Effect (Left Edge) -->
+  <rect x="0" y="0" width="16" height="450" fill="url(#spineShadow)" rx="6 0 0 6"/>
+  <line x1="16" y1="0" x2="16" y2="450" stroke="#000" stroke-opacity="0.2" stroke-width="1"/>
+</svg>
