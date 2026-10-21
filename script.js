@@ -68,6 +68,7 @@
     btnNextPage: document.getElementById('btn-next-page'),
     // Tombol Aksi Melayang & Panduan
     btnScrollTop: document.getElementById('btn-scroll-top'),
+    guideFloatingWrap: document.getElementById('guide-floating-wrap'),
     btnOpenGuide: document.getElementById('btn-open-guide'),
     guideCue: document.getElementById('guide-cue'),
     guideCueClose: document.getElementById('guide-cue-close'),
@@ -736,6 +737,7 @@
     }
 
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
   }
 
   // Tutup Modal Dialog
@@ -746,6 +748,7 @@
     }
     state.selectedBook = null;
     document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
   }
 
   // Escape HTML helper
@@ -880,13 +883,20 @@
     if (select && select._dropdown) select._dropdown.sync();
   }
 
+  // Variabel helper collapse tombol panduan
+  let collapseGuideButton = null;
+
   // Penanganan Panduan Siswa & Balon Petunjuk
   function openGuideModal() {
     if (dom.guideModalOverlay) {
       dom.guideModalOverlay.classList.add('open');
       dom.guideModalOverlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-open');
       if (dom.guideModalCloseBtn) dom.guideModalCloseBtn.focus();
+    }
+    if (typeof collapseGuideButton === 'function') {
+      collapseGuideButton();
     }
     dismissGuideCue();
   }
@@ -896,6 +906,7 @@
       dom.guideModalOverlay.classList.remove('open');
       dom.guideModalOverlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      document.body.classList.remove('modal-open');
     }
   }
 
@@ -927,6 +938,162 @@
         localStorage.setItem('smansa_guide_cue_dismissed', 'true');
       } catch (e) {}
     }
+  }
+
+  // Tombol Panduan Melayang: Draggable (Bisa Digeser) & Auto-Collapse (Menyembunyikan teks setelah ditekan)
+  function initDraggableGuide() {
+    const wrap = dom.guideFloatingWrap || document.getElementById('guide-floating-wrap') || dom.btnOpenGuide;
+    const btn = dom.btnOpenGuide;
+    if (!wrap || !btn) return;
+
+    // 1. Cek riwayat collapse: jika sudah pernah ditekan atau disimpan, langsung tampil ringkas
+    try {
+      const isCollapsed = localStorage.getItem('smansa_guide_collapsed');
+      if (isCollapsed === 'true') {
+        btn.classList.add('collapsed');
+      }
+    } catch (e) {}
+
+    collapseGuideButton = function () {
+      if (!btn.classList.contains('collapsed')) {
+        btn.classList.add('collapsed');
+        try {
+          localStorage.setItem('smansa_guide_collapsed', 'true');
+        } catch (e) {}
+      }
+    };
+
+    // 2. Drag & Drop menggunakan Pointer Events (Touch di Smartphone + Mouse di Desktop)
+    let isDragging = false;
+    let hasMoved = false;
+    let startX = 0;
+    let startY = 0;
+    let initialLeft = 0;
+    let initialTop = 0;
+    let suppressClick = false;
+
+    function ensureAbsoluteCoords() {
+      const rect = wrap.getBoundingClientRect();
+      wrap.style.bottom = 'auto';
+      wrap.style.right = 'auto';
+      wrap.style.left = `${rect.left}px`;
+      wrap.style.top = `${rect.top}px`;
+    }
+
+    function onPointerDown(e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      if (e.target.closest('#guide-cue-close')) return;
+
+      isDragging = true;
+      hasMoved = false;
+      startX = e.clientX;
+      startY = e.clientY;
+
+      const rect = wrap.getBoundingClientRect();
+      initialLeft = rect.left;
+      initialTop = rect.top;
+
+      ensureAbsoluteCoords();
+      wrap.classList.add('is-dragging');
+      wrap.style.transition = 'none';
+
+      try {
+        btn.setPointerCapture(e.pointerId);
+      } catch (err) {}
+    }
+
+    function onPointerMove(e) {
+      if (!isDragging) return;
+
+      const deltaX = e.clientX - startX;
+      const deltaY = e.clientY - startY;
+
+      // Ambang batas pergerakan 5px untuk membedakan antara klik biasa vs geser
+      if (!hasMoved && (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5)) {
+        hasMoved = true;
+        dismissGuideCue();
+      }
+
+      if (hasMoved) {
+        e.preventDefault();
+        const rect = wrap.getBoundingClientRect();
+        const padding = 12;
+
+        let nextX = initialLeft + deltaX;
+        let nextY = initialTop + deltaY;
+
+        const minX = padding;
+        const maxX = window.innerWidth - rect.width - padding;
+        const minY = padding + 60; // Jaga batas bawah header sticky
+        const maxY = window.innerHeight - rect.height - padding;
+
+        nextX = Math.max(minX, Math.min(maxX, nextX));
+        nextY = Math.max(minY, Math.min(maxY, nextY));
+
+        wrap.style.left = `${nextX}px`;
+        wrap.style.top = `${nextY}px`;
+      }
+    }
+
+    function onPointerUp(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      wrap.classList.remove('is-dragging');
+
+      try {
+        btn.releasePointerCapture(e.pointerId);
+      } catch (err) {}
+
+      if (hasMoved) {
+        // Tahan klik agar saat digeser tidak langsung membuka modal panduan
+        suppressClick = true;
+        setTimeout(() => {
+          suppressClick = false;
+        }, 150);
+
+        // Snap magnetik halus ke tepi kiri atau kanan layar terdekat
+        const rect = wrap.getBoundingClientRect();
+        const padding = 12;
+        const centerX = rect.left + rect.width / 2;
+        const snapLeft = centerX < window.innerWidth / 2;
+        const targetX = snapLeft ? padding : (window.innerWidth - rect.width - padding);
+        const targetY = Math.max(padding + 60, Math.min(window.innerHeight - rect.height - padding, rect.top));
+
+        wrap.style.transition = 'left 0.28s cubic-bezier(0.23, 1, 0.32, 1), top 0.28s cubic-bezier(0.23, 1, 0.32, 1)';
+        wrap.style.left = `${targetX}px`;
+        wrap.style.top = `${targetY}px`;
+        wrap.dataset.snapSide = snapLeft ? 'left' : 'right';
+      }
+    }
+
+    btn.addEventListener('pointerdown', onPointerDown);
+    btn.addEventListener('pointermove', onPointerMove);
+    btn.addEventListener('pointerup', onPointerUp);
+    btn.addEventListener('pointercancel', onPointerUp);
+
+    // Saat tombol diklik langsung (tanpa digeser)
+    btn.addEventListener('click', (e) => {
+      if (suppressClick) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+      collapseGuideButton();
+      openGuideModal();
+    });
+
+    // Menyesuaikan posisi jika orientasi HP atau ukuran jendela browser berubah
+    window.addEventListener('resize', () => {
+      if (wrap.style.left) {
+        const rect = wrap.getBoundingClientRect();
+        const padding = 12;
+        const isLeft = wrap.dataset.snapSide === 'left';
+        const finalX = isLeft ? padding : (window.innerWidth - rect.width - padding);
+        const finalY = Math.max(padding + 60, Math.min(window.innerHeight - rect.height - padding, rect.top));
+        wrap.style.left = `${Math.max(padding, finalX)}px`;
+        wrap.style.top = `${finalY}px`;
+      }
+    });
   }
 
   function initEvents() {
@@ -1024,8 +1191,10 @@
       });
     }
 
-    // Tombol & Balon Panduan Siswa (?)
-    if (dom.btnOpenGuide) dom.btnOpenGuide.addEventListener('click', openGuideModal);
+    // Inisialisasi Tombol Panduan Melayang (Draggable & Collapsible)
+    initDraggableGuide();
+
+    // Balon Petunjuk Penjelas (Cue Popover)
     if (dom.guideCue) {
       dom.guideCue.addEventListener('click', (e) => {
         if (e.target !== dom.guideCueClose) {

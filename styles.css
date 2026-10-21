@@ -1542,28 +1542,23 @@ h1, h2, h3, h4, h5, h6 {
 /* ==========================================================================
    Tombol Aksi Melayang (Floating Action Buttons: Top Scroll & Panduan ?)
    ========================================================================== */
-.floating-actions {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.25rem;
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.75rem;
-  pointer-events: none;
-}
-
-@media (min-width: 640px) {
-  .floating-actions {
-    bottom: 2rem;
-    right: 2rem;
-    gap: 1rem;
-  }
+/* Sembunyikan elemen melayang saat dialog modal terbuka agar tidak menutupi tombol Tutup */
+body.modal-open .btn-scroll-top,
+body.modal-open .guide-floating-wrap,
+body.modal-open .floating-actions {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: scale(0.85) !important;
+  transition: opacity 0.2s var(--ease-out), visibility 0.2s, transform 0.2s;
 }
 
 /* Tombol Kembali ke Atas (Auto Scroll to Top) */
 .btn-scroll-top {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.25rem;
+  z-index: 85;
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
@@ -1584,6 +1579,13 @@ h1, h2, h3, h4, h5, h6 {
   user-select: none;
 }
 
+@media (min-width: 640px) {
+  .btn-scroll-top {
+    bottom: 5.75rem;
+    right: 2rem;
+  }
+}
+
 .btn-scroll-top.visible {
   opacity: 1;
   visibility: visible;
@@ -1600,6 +1602,39 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-scroll-top:active {
   transform: scale(0.94);
+}
+
+/* Kontainer Tombol Panduan Melayang (Dapat Digeser Bebas / Draggable) */
+.guide-floating-wrap {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.25rem;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  user-select: none;
+  touch-action: none;
+}
+
+@media (min-width: 640px) {
+  .guide-floating-wrap {
+    bottom: 2rem;
+    right: 2rem;
+    gap: 1rem;
+  }
+}
+
+.guide-floating-wrap.is-dragging {
+  cursor: grabbing !important;
+}
+
+.guide-floating-wrap.is-dragging .btn-floating-guide {
+  cursor: grabbing !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 14px 36px rgba(43, 96, 50, 0.55), 0 4px 12px rgba(0, 0, 0, 0.22) !important;
+  transition: none !important;
 }
 
 .sr-only {
@@ -1694,15 +1729,16 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.625rem;
   height: 52px;
-  padding: 0 1.25rem 0 0.625rem;
+  padding: 0 1.25rem 0 0.5rem;
   border-radius: var(--radius-full);
   background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-hover) 100%);
   color: var(--on-secondary);
   border: 2px solid rgba(255, 255, 255, 0.28);
   box-shadow: 0 6px 22px rgba(43, 96, 50, 0.45), 0 2px 6px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
+  cursor: grab;
   user-select: none;
-  transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), filter 0.2s;
+  touch-action: none;
+  transition: width 0.3s var(--ease-out), padding 0.3s var(--ease-out), transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), filter 0.2s;
 }
 
 .btn-floating-guide:hover {
@@ -1719,8 +1755,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
   border-radius: var(--radius-full);
   background-color: #ffffff;
   color: var(--secondary);
@@ -1735,6 +1772,42 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  max-width: 160px;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-width 0.28s var(--ease-out), opacity 0.2s var(--ease-out), margin 0.28s var(--ease-out);
+}
+
+/* Mode Ringkas / Collapsed (Hanya simbol '?' setelah ditekan sekali) */
+.btn-floating-guide.collapsed {
+  padding: 0;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  justify-content: center;
+  gap: 0;
+}
+
+.btn-floating-guide.collapsed .guide-btn-label {
+  max-width: 0;
+  opacity: 0;
+  margin: 0;
+}
+
+/* Pada Desktop dengan mouse: tetap bisa mengembang saat di-hover */
+@media (hover: hover) and (pointer: fine) {
+  .btn-floating-guide.collapsed:hover {
+    padding: 0 1.25rem 0 0.5rem;
+    width: auto;
+    min-width: 52px;
+    gap: 0.625rem;
+  }
+
+  .btn-floating-guide.collapsed:hover .guide-btn-label {
+    max-width: 160px;
+    opacity: 1;
+    margin-right: 0.25rem;
+  }
 }
 
 /* Lingkaran Berdenyut Lembut di Belakang Tombol Panduan */
@@ -1983,7 +2056,7 @@ h1, h2, h3, h4, h5, h6 {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 1000;
   background-color: rgba(23, 33, 70, 0.45); /* Navy 40% scrim */
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);

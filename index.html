@@ -322,16 +322,16 @@
     </div>
   </div>
 
-  <!-- Tombol Aksi Melayang (Floating Actions: Scroll to Top & Panduan Siswa) -->
-  <div class="floating-actions" aria-label="Aksi Cepat Halaman">
-    <!-- Tombol Kembali ke Atas (Auto Scroll to Top) -->
-    <button type="button" id="btn-scroll-top" class="btn-scroll-top" aria-label="Kembali ke atas halaman" title="Kembali ke atas halaman">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="m18 15-6-6-6 6"/>
-      </svg>
-      <span class="sr-only">Ke Atas</span>
-    </button>
+  <!-- Tombol Kembali ke Atas (Auto Scroll to Top) -->
+  <button type="button" id="btn-scroll-top" class="btn-scroll-top" aria-label="Kembali ke atas halaman" title="Kembali ke atas halaman">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+    <span class="sr-only">Ke Atas</span>
+  </button>
 
+  <!-- Kontainer Melayang Panduan Siswa (Dapat Digeser Bebas / Draggable) -->
+  <div id="guide-floating-wrap" class="guide-floating-wrap" aria-label="Aksi Panduan Melayang">
     <!-- Balon Petunjuk Penjelas (Cue Popover) -->
     <div id="guide-cue" class="guide-cue" role="status" aria-live="polite">
       <div class="guide-cue-content">
@@ -343,7 +343,7 @@
     </div>
 
     <!-- Tombol Panduan Peminjaman Siswa (?) -->
-    <button type="button" id="btn-open-guide" class="btn-floating-guide" aria-label="Buka Panduan Peminjaman Buku Siswa" aria-haspopup="dialog">
+    <button type="button" id="btn-open-guide" class="btn-floating-guide" aria-label="Buka Panduan Peminjaman Buku Siswa" aria-haspopup="dialog" title="Ketuk untuk membuka panduan atau geser untuk memindahkan tombol">
       <span class="guide-btn-icon" aria-hidden="true">?</span>
       <span class="guide-btn-label">Panduan Siswa</span>
       <span class="guide-btn-pulse" aria-hidden="true"></span>
