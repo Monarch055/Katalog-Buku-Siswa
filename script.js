@@ -9,6 +9,8 @@
 
   // Konfigurasi ambang batas katalog usang (dalam milidetik, misal 24 jam)
   const STALE_THRESHOLD_MS = 24 * 60 * 60 * 1000;
+  // Batas maksimum buku per halaman (Pagination)
+  const ITEMS_PER_PAGE = 10;
 
   // State aplikasi
   const state = {
@@ -26,6 +28,12 @@
       category: 'ALL',
       onlyAvailable: false,
       shelf: 'ALL',
+    },
+    pagination: {
+      currentPage: 1,
+      perPage: ITEMS_PER_PAGE,
+      totalPages: 1,
+      totalFiltered: 0,
     },
     loading: true,
     error: null,
@@ -52,6 +60,21 @@
     errorMessage: document.getElementById('error-message'),
     btnRetry: document.getElementById('btn-retry'),
     btnResetEmpty: document.getElementById('btn-reset-empty'),
+    // Navigasi Pagination
+    paginationNav: document.getElementById('pagination-nav'),
+    paginationInfoText: document.getElementById('pagination-info-text'),
+    paginationPages: document.getElementById('pagination-pages'),
+    btnPrevPage: document.getElementById('btn-prev-page'),
+    btnNextPage: document.getElementById('btn-next-page'),
+    // Tombol Aksi Melayang & Panduan
+    btnScrollTop: document.getElementById('btn-scroll-top'),
+    btnOpenGuide: document.getElementById('btn-open-guide'),
+    guideCue: document.getElementById('guide-cue'),
+    guideCueClose: document.getElementById('guide-cue-close'),
+    guideModalOverlay: document.getElementById('guide-modal-overlay'),
+    guideModalCloseBtn: document.getElementById('guide-modal-close-btn'),
+    guideModalCloseAction: document.getElementById('guide-modal-close-action'),
+    // Modal Dialog Rincian Buku
     modalOverlay: document.getElementById('modal-overlay'),
     modalCloseBtn: document.getElementById('modal-close-btn'),
     modalCloseAction: document.getElementById('modal-close-action'),
@@ -302,6 +325,7 @@
     allChip.innerHTML = `Semua <span class="chip-count">${state.books.length}</span>`;
     allChip.addEventListener('click', () => {
       state.filter.category = 'ALL';
+      state.pagination.currentPage = 1;
       renderCategoryChips();
       renderResults();
     });
@@ -315,6 +339,7 @@
       chip.innerHTML = `${escapeHtml(cat)} <span class="chip-count">${catCounts[cat]}</span>`;
       chip.addEventListener('click', () => {
         state.filter.category = state.filter.category === cat ? 'ALL' : cat;
+        state.pagination.currentPage = 1;
         renderCategoryChips();
         renderResults();
       });
@@ -391,15 +416,29 @@
     });
   }
 
-  // Render daftar kartu hasil pencarian
+  // Render daftar kartu hasil pencarian dengan pembatasan 10 buku per halaman
   function renderResults() {
     if (!dom.resultsGrid) return;
 
     const filtered = getFilteredBooks();
+    const total = filtered.length;
+    const perPage = state.pagination.perPage;
+    const totalPages = Math.max(1, Math.ceil(total / perPage));
 
-    // Update jumlah hasil
+    // Pastikan halaman aktif valid dalam batas halaman baru
+    if (state.pagination.currentPage > totalPages) {
+      state.pagination.currentPage = totalPages;
+    }
+    if (state.pagination.currentPage < 1) {
+      state.pagination.currentPage = 1;
+    }
+
+    state.pagination.totalPages = totalPages;
+    state.pagination.totalFiltered = total;
+
+    // Update teks jumlah hasil pencarian
     if (dom.resultsCount) {
-      dom.resultsCount.textContent = `${filtered.length} buku ditemukan`;
+      dom.resultsCount.textContent = `${total} buku ditemukan`;
     }
 
     // Toggle tombol bersihkan filter
@@ -414,16 +453,22 @@
     }
 
     // Tampilkan empty state jika tidak ada hasil
-    if (filtered.length === 0) {
+    if (total === 0) {
       dom.resultsGrid.innerHTML = '';
       if (dom.emptyState) dom.emptyState.style.display = 'block';
+      if (dom.paginationNav) dom.paginationNav.style.display = 'none';
       return;
     }
 
     if (dom.emptyState) dom.emptyState.style.display = 'none';
 
-    // Render kartu buku
-    dom.resultsGrid.innerHTML = filtered
+    // Potong buku berdasarkan halaman saat ini (maksimum 10 buku)
+    const startIdx = (state.pagination.currentPage - 1) * perPage;
+    const endIdx = Math.min(startIdx + perPage, total);
+    const pagedBooks = filtered.slice(startIdx, endIdx);
+
+    // Render kartu buku untuk halaman aktif
+    dom.resultsGrid.innerHTML = pagedBooks
       .map((b) => {
         const isAvailable = b.isAvailable;
         const statusLabel = isAvailable
@@ -496,6 +541,114 @@
         openModal(id);
       });
     });
+
+    // Render baris pagination
+    renderPagination(total, totalPages, startIdx, endIdx);
+  }
+
+  // Render kontrol navigasi halaman (Pagination)
+  function renderPagination(total, totalPages, startIdx, endIdx) {
+    if (!dom.paginationNav) return;
+
+    if (total <= 0) {
+      dom.paginationNav.style.display = 'none';
+      return;
+    }
+
+    dom.paginationNav.style.display = 'flex';
+
+    if (dom.paginationInfoText) {
+      dom.paginationInfoText.innerHTML = `Menampilkan <strong>${startIdx + 1}–${endIdx}</strong> dari <strong>${total}</strong> koleksi &bull; Halaman <strong>${state.pagination.currentPage}</strong> dari <strong>${totalPages}</strong>`;
+    }
+
+    if (dom.btnPrevPage) {
+      dom.btnPrevPage.disabled = state.pagination.currentPage <= 1;
+      dom.btnPrevPage.onclick = () => {
+        if (state.pagination.currentPage > 1) {
+          state.pagination.currentPage--;
+          renderResults();
+          scrollToResults();
+        }
+      };
+    }
+
+    if (dom.btnNextPage) {
+      dom.btnNextPage.disabled = state.pagination.currentPage >= totalPages;
+      dom.btnNextPage.onclick = () => {
+        if (state.pagination.currentPage < totalPages) {
+          state.pagination.currentPage++;
+          renderResults();
+          scrollToResults();
+        }
+      };
+    }
+
+    if (!dom.paginationPages) return;
+    dom.paginationPages.innerHTML = '';
+
+    // Hanya tampilkan nomor halaman jika total halaman > 1
+    if (totalPages <= 1) {
+      return;
+    }
+
+    // Pembuatan nomor halaman cerdas (windowing)
+    const curr = state.pagination.currentPage;
+    const pages = [];
+
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (curr > 3) {
+        pages.push('...');
+      }
+      const start = Math.max(2, curr - 1);
+      const end = Math.min(totalPages - 1, curr + 1);
+      for (let i = start; i <= end; i++) {
+        if (!pages.includes(i)) pages.push(i);
+      }
+      if (curr < totalPages - 2) {
+        pages.push('...');
+      }
+      if (!pages.includes(totalPages)) pages.push(totalPages);
+    }
+
+    pages.forEach((p) => {
+      if (p === '...') {
+        const span = document.createElement('span');
+        span.className = 'pagination-ellipsis';
+        span.textContent = '…';
+        span.setAttribute('aria-hidden', 'true');
+        dom.paginationPages.appendChild(span);
+      } else {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `btn-page ${p === curr ? 'active' : ''}`;
+        btn.textContent = String(p);
+        btn.setAttribute('aria-label', `Halaman ${p}`);
+        if (p === curr) {
+          btn.setAttribute('aria-current', 'page');
+        }
+        btn.addEventListener('click', () => {
+          if (state.pagination.currentPage !== p) {
+            state.pagination.currentPage = p;
+            renderResults();
+            scrollToResults();
+          }
+        });
+        dom.paginationPages.appendChild(btn);
+      }
+    });
+  }
+
+  // Otomatis scroll halus ke area katalog buku saat berpindah halaman
+  function scrollToResults() {
+    const el = document.getElementById('hasil-katalog');
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      const topOffset = window.pageYOffset + rect.top - 80;
+      window.scrollTo({ top: Math.max(0, topOffset), behavior: 'smooth' });
+    }
   }
 
   // Render skeleton loading
@@ -727,6 +880,55 @@
     if (select && select._dropdown) select._dropdown.sync();
   }
 
+  // Penanganan Panduan Siswa & Balon Petunjuk
+  function openGuideModal() {
+    if (dom.guideModalOverlay) {
+      dom.guideModalOverlay.classList.add('open');
+      dom.guideModalOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (dom.guideModalCloseBtn) dom.guideModalCloseBtn.focus();
+    }
+    dismissGuideCue();
+  }
+
+  function closeGuideModal() {
+    if (dom.guideModalOverlay) {
+      dom.guideModalOverlay.classList.remove('open');
+      dom.guideModalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function initGuideCue() {
+    if (!dom.guideCue) return;
+    try {
+      const dismissed = localStorage.getItem('smansa_guide_cue_dismissed');
+      if (!dismissed) {
+        // Tampilkan balon petunjuk setelah sedikit delay agar menarik perhatian siswa
+        setTimeout(() => {
+          if (dom.guideCue) dom.guideCue.classList.add('show');
+        }, 1000);
+        // Otomatis hilangkan setelah 10 detik agar tidak menutupi tampilan
+        setTimeout(() => {
+          if (dom.guideCue && dom.guideCue.classList.contains('show')) {
+            dom.guideCue.classList.remove('show');
+          }
+        }, 11000);
+      }
+    } catch (e) {
+      // Abaikan jika localStorage dibatasi
+    }
+  }
+
+  function dismissGuideCue() {
+    if (dom.guideCue) {
+      dom.guideCue.classList.remove('show');
+      try {
+        localStorage.setItem('smansa_guide_cue_dismissed', 'true');
+      } catch (e) {}
+    }
+  }
+
   function initEvents() {
     enhanceSelect(dom.categorySelect);
     enhanceSelect(dom.shelfSelect);
@@ -738,6 +940,7 @@
         clearTimeout(searchTimeout);
         searchTimeout = setTimeout(() => {
           state.filter.search = e.target.value;
+          state.pagination.currentPage = 1;
           renderResults();
         }, 150);
       });
@@ -748,9 +951,9 @@
       dom.searchForm.addEventListener('submit', (e) => {
         e.preventDefault();
         state.filter.search = dom.searchInput.value;
+        state.pagination.currentPage = 1;
         renderResults();
-        const resultsEl = document.getElementById('hasil-katalog');
-        if (resultsEl) resultsEl.scrollIntoView({ behavior: 'smooth' });
+        scrollToResults();
       });
     }
 
@@ -758,6 +961,7 @@
     if (dom.availabilityFilter) {
       dom.availabilityFilter.addEventListener('click', () => {
         state.filter.onlyAvailable = !state.filter.onlyAvailable;
+        state.pagination.currentPage = 1;
         dom.availabilityFilter.classList.toggle('active', state.filter.onlyAvailable);
         renderResults();
       });
@@ -767,6 +971,7 @@
     if (dom.categorySelect) {
       dom.categorySelect.addEventListener('change', (e) => {
         state.filter.category = e.target.value;
+        state.pagination.currentPage = 1;
         renderCategoryChips();
         renderResults();
       });
@@ -776,6 +981,7 @@
     if (dom.shelfSelect) {
       dom.shelfSelect.addEventListener('change', (e) => {
         state.filter.shelf = e.target.value;
+        state.pagination.currentPage = 1;
         renderResults();
       });
     }
@@ -786,6 +992,7 @@
       state.filter.category = 'ALL';
       state.filter.onlyAvailable = false;
       state.filter.shelf = 'ALL';
+      state.pagination.currentPage = 1;
 
       if (dom.searchInput) dom.searchInput.value = '';
       if (dom.availabilityFilter) dom.availabilityFilter.classList.remove('active');
@@ -800,7 +1007,47 @@
     if (dom.btnResetEmpty) dom.btnResetEmpty.addEventListener('click', resetAllFilters);
     if (dom.btnRetry) dom.btnRetry.addEventListener('click', loadCatalog);
 
-    // Modal Events
+    // Tombol Auto Scroll to Top
+    function handleScroll() {
+      if (dom.btnScrollTop) {
+        if (window.scrollY > 280) {
+          dom.btnScrollTop.classList.add('visible');
+        } else {
+          dom.btnScrollTop.classList.remove('visible');
+        }
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (dom.btnScrollTop) {
+      dom.btnScrollTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Tombol & Balon Panduan Siswa (?)
+    if (dom.btnOpenGuide) dom.btnOpenGuide.addEventListener('click', openGuideModal);
+    if (dom.guideCue) {
+      dom.guideCue.addEventListener('click', (e) => {
+        if (e.target !== dom.guideCueClose) {
+          openGuideModal();
+        }
+      });
+    }
+    if (dom.guideCueClose) {
+      dom.guideCueClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dismissGuideCue();
+      });
+    }
+    if (dom.guideModalCloseBtn) dom.guideModalCloseBtn.addEventListener('click', closeGuideModal);
+    if (dom.guideModalCloseAction) dom.guideModalCloseAction.addEventListener('click', closeGuideModal);
+    if (dom.guideModalOverlay) {
+      dom.guideModalOverlay.addEventListener('click', (e) => {
+        if (e.target === dom.guideModalOverlay) closeGuideModal();
+      });
+    }
+
+    // Modal Detail Buku Events
     if (dom.modalCloseBtn) dom.modalCloseBtn.addEventListener('click', closeModal);
     if (dom.modalCloseAction) dom.modalCloseAction.addEventListener('click', closeModal);
     if (dom.modalOverlay) {
@@ -809,9 +1056,15 @@
       });
     }
 
+    // Keyboard Escape untuk menutup kedua modal
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && dom.modalOverlay && dom.modalOverlay.classList.contains('open')) {
-        closeModal();
+      if (e.key === 'Escape') {
+        if (dom.modalOverlay && dom.modalOverlay.classList.contains('open')) {
+          closeModal();
+        }
+        if (dom.guideModalOverlay && dom.guideModalOverlay.classList.contains('open')) {
+          closeGuideModal();
+        }
       }
     });
   }
@@ -820,5 +1073,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     initEvents();
     loadCatalog();
+    initGuideCue();
   });
 })();

@@ -178,28 +178,25 @@
           Coba Lagi
         </button>
       </div>
-    </section>
-
-    <!-- Panduan Peminjaman untuk Siswa -->
-    <section class="guide-section" aria-labelledby="guide-title">
-      <h3 id="guide-title" class="guide-title">Panduan Peminjaman Buku di Perpustakaan</h3>
-      <ol class="guide-steps">
-        <li>
-          <strong>Cari & Catat Nomor Rak:</strong> Temukan buku yang kamu inginkan di situs ini, lalu catat kode raknya (contoh: <code>Rak A-01</code>).
-        </li>
-        <li>
-          <strong>Ambil Buku di Rak Fisik:</strong> Datang langsung ke ruangan perpustakaan SMAN 1 Sekayam dan ambil buku pada rak yang tertera.
-        </li>
-        <li>
-          <strong>Bawa ke Meja Petugas Sirkulasi:</strong> Serahkan buku fisik kepada petugas dan sebutkan nama lengkap atau NISN kamu.
-        </li>
-        <li>
-          <strong>Petugas Memindai QR Code:</strong> Petugas akan men-scan kode inventaris buku dan mencatat tanggal jatuh tempo pengembalian.
-        </li>
-        <li>
-          <strong>Kembalikan Tepat Waktu:</strong> Jaga kebersihan buku dan kembalikan sebelum melewati batas waktu peminjaman agar tidak terkena denda.
-        </li>
-      </ol>
+      <!-- Navigasi Halaman (Pagination) -->
+      <nav id="pagination-nav" class="pagination-nav" aria-label="Navigasi Halaman Buku" style="display: none;">
+        <div class="pagination-info">
+          <span id="pagination-info-text">Menampilkan 1–10 dari 25 buku</span>
+        </div>
+        <div class="pagination-controls">
+          <button type="button" id="btn-prev-page" class="btn-page btn-page-nav" aria-label="Halaman Sebelumnya">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Sebelumnya</span>
+          </button>
+          <div id="pagination-pages" class="pagination-pages" role="navigation" aria-label="Nomor Halaman">
+            <!-- Tombol nomor halaman di-render dinamis oleh JavaScript -->
+          </div>
+          <button type="button" id="btn-next-page" class="btn-page btn-page-nav" aria-label="Halaman Selanjutnya">
+            <span>Selanjutnya</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </nav>
     </section>
   </main>
 
@@ -320,6 +317,149 @@
       <footer class="modal-footer">
         <button type="button" id="modal-close-action" class="btn btn-outline">
           Tutup
+        </button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Tombol Aksi Melayang (Floating Actions: Scroll to Top & Panduan Siswa) -->
+  <div class="floating-actions" aria-label="Aksi Cepat Halaman">
+    <!-- Tombol Kembali ke Atas (Auto Scroll to Top) -->
+    <button type="button" id="btn-scroll-top" class="btn-scroll-top" aria-label="Kembali ke atas halaman" title="Kembali ke atas halaman">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m18 15-6-6-6 6"/>
+      </svg>
+      <span class="sr-only">Ke Atas</span>
+    </button>
+
+    <!-- Balon Petunjuk Penjelas (Cue Popover) -->
+    <div id="guide-cue" class="guide-cue" role="status" aria-live="polite">
+      <div class="guide-cue-content">
+        <span class="guide-cue-icon" aria-hidden="true">💡</span>
+        <span class="guide-cue-text">Bingung cara pinjam? Klik di sini!</span>
+      </div>
+      <button type="button" id="guide-cue-close" class="guide-cue-close" aria-label="Tutup petunjuk">✕</button>
+      <div class="guide-cue-arrow" aria-hidden="true"></div>
+    </div>
+
+    <!-- Tombol Panduan Peminjaman Siswa (?) -->
+    <button type="button" id="btn-open-guide" class="btn-floating-guide" aria-label="Buka Panduan Peminjaman Buku Siswa" aria-haspopup="dialog">
+      <span class="guide-btn-icon" aria-hidden="true">?</span>
+      <span class="guide-btn-label">Panduan Siswa</span>
+      <span class="guide-btn-pulse" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <!-- Modal Dialog Panduan Peminjaman Siswa -->
+  <div id="guide-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title" aria-hidden="true">
+    <div class="modal-container guide-modal-container">
+      <header class="modal-header">
+        <div style="min-width: 0;">
+          <span class="guide-category-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            Bantuan & Prosedur Siswa
+          </span>
+          <h3 id="guide-modal-title" class="modal-title">Panduan Peminjaman Buku</h3>
+        </div>
+        <button type="button" id="guide-modal-close-btn" class="modal-close-btn" aria-label="Tutup jendela panduan">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </header>
+
+      <div class="modal-body guide-modal-body">
+        <p class="guide-lead-text">
+          Halo, siswa SMAN 1 Sekayam! Mau pinjam buku untuk belajar atau bacaan santai? Ikuti <strong>5 langkah mudah</strong> berikut ini:
+        </p>
+
+        <!-- Langkah-langkah Peminjaman Berurutan -->
+        <div class="guide-steps-container">
+          <div class="guide-step-card">
+            <div class="guide-step-number" aria-hidden="true">1</div>
+            <div class="guide-step-body">
+              <h4 class="guide-step-title">Cari Buku & Pastikan Statusnya Tersedia</h4>
+              <p class="guide-step-desc">
+                Cari judul buku di website ini. Pastikan ada tanda hijau <strong class="text-secondary">"Tersedia"</strong>. Jika bertuliskan <em>"Tidak tersedia"</em>, artinya seluruh eksemplar sedang dipinjam teman lain.
+              </p>
+            </div>
+          </div>
+
+          <div class="guide-step-card">
+            <div class="guide-step-number" aria-hidden="true">2</div>
+            <div class="guide-step-body">
+              <h4 class="guide-step-title">Catat Kode Rak Buku Fisik</h4>
+              <p class="guide-step-desc">
+                Perhatikan kode raknya, misalnya <code class="shelf-inline-code">Rak A-01</code> atau <code class="shelf-inline-code">Rak B-02</code>. Setiap lemari buku di perpustakaan memiliki papan label rak yang sama persis dengan kode ini.
+              </p>
+            </div>
+          </div>
+
+          <div class="guide-step-card">
+            <div class="guide-step-number" aria-hidden="true">3</div>
+            <div class="guide-step-body">
+              <h4 class="guide-step-title">Kunjungi Perpustakaan & Ambil Bukunya</h4>
+              <p class="guide-step-desc">
+                Datang langsung ke ruangan perpustakaan pada jam istirahat atau jam buka sekolah. Cari lemari sesuai kode rak yang kamu catat, lalu ambil bukunya di rak.
+              </p>
+            </div>
+          </div>
+
+          <div class="guide-step-card">
+            <div class="guide-step-number" aria-hidden="true">4</div>
+            <div class="guide-step-body">
+              <h4 class="guide-step-title">Bawa ke Meja Petugas & Tunjukkan NISN</h4>
+              <p class="guide-step-desc">
+                Bawa buku ke meja pelayanan. Sebutkan nama lengkap atau tunjukkan <strong>10 digit NISN</strong> kamu ke petugas perpustakaan (Pak Hendra / Ibu Ratna). Petugas akan memindai barcode buku dan mencatat peminjamanmu.
+              </p>
+            </div>
+          </div>
+
+          <div class="guide-step-card">
+            <div class="guide-step-number" aria-hidden="true">5</div>
+            <div class="guide-step-body">
+              <h4 class="guide-step-title">Rawat Buku & Kembalikan Tepat Waktu</h4>
+              <p class="guide-step-desc">
+                Masa pinjam adalah <strong>14 hari</strong>. Rawat buku dengan baik (jangan dilipat, dicoret, atau dibasahi), lalu kembalikan ke meja petugas sebelum lewat tanggal jatuh tempo!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu Ringkasan Aturan Penting -->
+        <div class="guide-rules-card">
+          <div class="guide-rules-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+            <h4>Ketentuan Penting Perpustakaan:</h4>
+          </div>
+          <div class="guide-rules-grid">
+            <div class="guide-rule-item">
+              <span class="guide-rule-badge">Batas Pinjam</span>
+              <p>Maksimal <strong>3 buku</strong> sekaligus per siswa.</p>
+            </div>
+            <div class="guide-rule-item">
+              <span class="guide-rule-badge">Durasi</span>
+              <p>Batas waktu peminjaman adalah <strong>14 hari</strong>.</p>
+            </div>
+            <div class="guide-rule-item">
+              <span class="guide-rule-badge">Denda</span>
+              <p>Terlambat dikenakan denda <strong>Rp2.000 / hari</strong> per buku.</p>
+            </div>
+            <div class="guide-rule-item">
+              <span class="guide-rule-badge">Tanya Petugas</span>
+              <p>Kesulitan mencari buku? Jangan ragu tanya ke petugas jaga!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="modal-footer">
+        <button type="button" id="guide-modal-close-action" class="btn btn-secondary btn-block-mobile">
+          Siap, Saya Paham!
         </button>
       </footer>
     </div>

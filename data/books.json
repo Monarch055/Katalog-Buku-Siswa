@@ -1,514 +1,514 @@
 {
-  "metadata": {
-    "school": "SMAN 1 Sekayam",
-    "schemaVersion": "1.0",
-    "catalogVersion": "2026-10-13T06:00:00+07:00",
-    "generatedAt": "2026-10-13T06:00:00+07:00",
-    "totalTitles": 25,
-    "totalCopies": 84,
-    "availableCopies": 68
-  },
-  "updated_at": "2026-10-13T06:00:00+07:00",
-  "books": [
-    {
-      "id": "BK-000241",
-      "title": "Atomic Habits: Perubahan Kecil yang Memberikan Hasil Luar Biasa",
-      "author": "James Clear",
-      "publisher": "Gramedia Pustaka Utama",
-      "publicationYear": 2019,
-      "year": 2019,
-      "isbn": "9786020633176",
-      "category": "Pengembangan Diri",
-      "description": "Panduan praktis untuk membangun kebiasaan baik dan menghilangkan kebiasaan buruk dengan memanfaatkan sistem 1% setiap hari.",
-      "shelf": {
-        "code": "A-01",
-        "name": "Pengembangan Diri"
-      },
-      "totalCopies": 5,
-      "availableCopies": 3,
-      "available": 3,
-      "availability": "Available",
-      "cover": "assets/covers/b1.jpg"
+    "metadata": {
+        "school": "SMAN 1 Sekayam",
+        "schemaVersion": "1.0",
+        "catalogVersion": "2026-10-21T13:43:35+07:00",
+        "generatedAt": "2026-10-21T13:43:35+07:00",
+        "totalTitles": 25,
+        "totalCopies": 86,
+        "availableCopies": 74
     },
-    {
-      "id": "BK-000246",
-      "title": "Filosofi Teras: Hindari Stres dengan Stoikisme",
-      "author": "Henry Manampiring",
-      "publisher": "Kompas",
-      "publicationYear": 2018,
-      "year": 2018,
-      "isbn": "9786024125189",
-      "category": "Filsafat & Psikologi",
-      "description": "Penerapan filsafat Stoisisme kuno Yunani-Romawi untuk mengatasi emosi negatif dan mengasah ketangguhan mental masa kini.",
-      "shelf": {
-        "code": "A-02",
-        "name": "Filsafat & Psikologi"
-      },
-      "totalCopies": 3,
-      "availableCopies": 2,
-      "available": 2,
-      "availability": "Available",
-      "cover": "assets/covers/b2.jpg"
-    },
-    {
-      "id": "BK-000249",
-      "title": "Bumi Manusia",
-      "author": "Pramoedya Ananta Toer",
-      "publisher": "Lentera Dipantara",
-      "publicationYear": 2005,
-      "year": 2005,
-      "isbn": "9789799731234",
-      "category": "Sastra & Fiksi",
-      "description": "Kisah Minke di era kolonial Hindia Belanda dalam memperjuangkan martabat dan keadilan melalui tulisan dan cinta kepada Annelies.",
-      "shelf": {
-        "code": "B-01",
-        "name": "Sastra Indonesia"
-      },
-      "totalCopies": 4,
-      "availableCopies": 3,
-      "available": 3,
-      "availability": "Available",
-      "cover": "assets/covers/b3.jpg"
-    },
-    {
-      "id": "BK-000253",
-      "title": "Laskar Pelangi",
-      "author": "Andrea Hirata",
-      "publisher": "Bentang Pustaka",
-      "publicationYear": 2005,
-      "year": 2005,
-      "isbn": "9789793062792",
-      "category": "Sastra & Fiksi",
-      "description": "Perjuangan sepuluh anak di Belitung dalam menempuh pendidikan di sekolah sederhana dengan keterbatasan sarana prasarana.",
-      "shelf": {
-        "code": "B-01",
-        "name": "Sastra Indonesia"
-      },
-      "totalCopies": 4,
-      "availableCopies": 4,
-      "available": 4,
-      "availability": "Available",
-      "cover": "assets/covers/b4.jpg"
-    },
-    {
-      "id": "BK-000257",
-      "title": "Biologi SMA/MA Kelas X (Kurikulum Merdeka)",
-      "author": "Irnaningtyas",
-      "publisher": "Erlangga",
-      "publicationYear": 2022,
-      "year": 2022,
-      "isbn": "9786232666177",
-      "category": "Sains & Teknologi",
-      "description": "Buku teks pelajaran Biologi kelas 10 membahas keanekaragaman hayati, virus, ekosistem, dan perubahan lingkungan.",
-      "shelf": {
-        "code": "C-01",
-        "name": "IPA & Sains"
-      },
-      "totalCopies": 6,
-      "availableCopies": 5,
-      "available": 5,
-      "availability": "Available",
-      "cover": "assets/covers/b5.jpg"
-    },
-    {
-      "id": "BK-000263",
-      "title": "Fisika untuk SMA/MA Kelas XI",
-      "author": "Marthen Kanginan",
-      "publisher": "Erlangga",
-      "publicationYear": 2021,
-      "year": 2021,
-      "isbn": "9786022987826",
-      "category": "Sains & Teknologi",
-      "description": "Konsep fisika mekanika fluida, termodinamika, gelombang mekanik, dan optika disertai latihan soal aplikatif.",
-      "shelf": {
-        "code": "C-01",
-        "name": "IPA & Sains"
-      },
-      "totalCopies": 5,
-      "availableCopies": 4,
-      "available": 4,
-      "availability": "Available",
-      "cover": "assets/covers/b6.jpg"
-    },
-    {
-      "id": "BK-000268",
-      "title": "Kimia SMA/MA Kelas XII",
-      "author": "Unggul Sudarmo",
-      "publisher": "Erlangga",
-      "publicationYear": 2020,
-      "year": 2020,
-      "isbn": "9786022988137",
-      "category": "Sains & Teknologi",
-      "description": "Materi sifat koligatif larutan, redoks dan elektrokimia, kimia unsur, serta senyawa karbon dan makromolekul.",
-      "shelf": {
-        "code": "C-01",
-        "name": "IPA & Sains"
-      },
-      "totalCopies": 4,
-      "availableCopies": 3,
-      "available": 3,
-      "availability": "Available",
-      "cover": "assets/covers/b7.jpg"
-    },
-    {
-      "id": "BK-000272",
-      "title": "Matematika Tingkat Lanjut SMA Kelas XI",
-      "author": "Sukino",
-      "publisher": "Erlangga",
-      "publicationYear": 2022,
-      "year": 2022,
-      "isbn": "9786232667013",
-      "category": "Matematika",
-      "description": "Materi kalkulus, polinomial, vektor, dan matriks untuk peminatan matematika dan sains tingkat SMA.",
-      "shelf": {
-        "code": "C-02",
-        "name": "Matematika"
-      },
-      "totalCopies": 5,
-      "availableCopies": 3,
-      "available": 3,
-      "availability": "Available",
-      "cover": "assets/covers/b8.jpg"
-    },
-    {
-      "id": "BK-000277",
-      "title": "Sejarah Nasional Indonesia: Masa Kolonial hingga Reformasi",
-      "author": "Sartono Kartodirdjo",
-      "publisher": "Balai Pustaka",
-      "publicationYear": 2017,
-      "year": 2017,
-      "isbn": "9789794073384",
-      "category": "Sejarah & Sosial",
-      "description": "Rujukan komprehensif tentang dinamika pergerakan kebangsaan, perang kemerdekaan, hingga era reformasi modern di Indonesia.",
-      "shelf": {
-        "code": "D-01",
-        "name": "IPS & Sejarah"
-      },
-      "totalCopies": 3,
-      "availableCopies": 2,
-      "available": 2,
-      "availability": "Available",
-      "cover": "assets/covers/b9.jpg"
-    },
-    {
-      "id": "BK-000280",
-      "title": "Sosiologi: Menyelami Fenomena Sosial di Masyarakat",
-      "author": "Kun Maryati",
-      "publisher": "Esis",
-      "publicationYear": 2019,
-      "year": 2019,
-      "isbn": "9789790117426",
-      "category": "Sejarah & Sosial",
-      "description": "Pengantar konsep interaksi sosial, nilai norma, diferensiasi dan stratifikasi sosial, serta dinamika konflik dalam masyarakat.",
-      "shelf": {
-        "code": "D-01",
-        "name": "IPS & Sejarah"
-      },
-      "totalCopies": 3,
-      "availableCopies": 3,
-      "available": 3,
-      "availability": "Available",
-      "cover": "assets/covers/b10.jpg"
-    },
-    {
-      "id": "BK-000283",
-      "title": "Ekonomi SMA Kelas X",
-      "author": "Alam S.",
-      "publisher": "Erlangga",
-      "publicationYear": 2021,
-      "year": 2021,
-      "isbn": "9786024345211",
-      "category": "Sejarah & Sosial",
-      "description": "Membahas konsep dasar ilmu ekonomi, masalah ekonomi, sistem ekonomi, serta peran pelaku ekonomi dalam kegiatan produksi dan konsumsi.",
-      "shelf": {
-        "code": "D-02",
-        "name": "Ekonomi & Geografi"
-      },
-      "totalCopies": 4,
-      "availableCopies": 4,
-      "available": 4,
-      "availability": "Available",
-      "cover": "assets/covers/b11.jpg"
-    },
-    {
-      "id": "BK-000287",
-      "title": "Geografi: Lingkungan Hidup dan Mitigasi Bencana",
-      "author": "Gatot Harmanto",
-      "publisher": "Yrama Widya",
-      "publicationYear": 2020,
-      "year": 2020,
-      "isbn": "9786023748297",
-      "category": "Sejarah & Sosial",
-      "description": "Kajian spasial geografi Indonesia, dinamika litosfer, hidrosfer, atmosfer, serta mitigasi bencana alam di wilayah perbatasan.",
-      "shelf": {
-        "code": "D-02",
-        "name": "Ekonomi & Geografi"
-      },
-      "totalCopies": 3,
-      "availableCopies": 2,
-      "available": 2,
-      "availability": "Available",
-      "cover": "assets/covers/b12.jpg"
-    },
-    {
-      "id": "BK-000290",
-      "title": "Hujan",
-      "author": "Tere Liye",
-      "publisher": "Gramedia Pustaka Utama",
-      "publicationYear": 2016,
-      "year": 2016,
-      "isbn": "9786020324784",
-      "category": "Sastra & Fiksi",
-      "description": "Kisah tentang persahabatan, cinta, perpisahan, dan teknologi di masa depan saat bumi dilanda bencana iklim dahsyat.",
-      "shelf": {
-        "code": "B-02",
-        "name": "Fiksi Remaja"
-      },
-      "totalCopies": 4,
-      "availableCopies": 3,
-      "available": 3,
-      "availability": "Available",
-      "cover": "assets/covers/b13.jpg"
-    },
-    {
-      "id": "BK-000294",
-      "title": "Negeri 5 Menara",
-      "author": "A. Fuadi",
-      "publisher": "Gramedia Pustaka Utama",
-      "publicationYear": 2009,
-      "year": 2009,
-      "isbn": "9789792248616",
-      "category": "Sastra & Fiksi",
-      "description": "Kisah enam santri dari berbagai daerah di pondok pesantren Madani yang berpegang pada mantra Man Jadda Wajada.",
-      "shelf": {
-        "code": "B-02",
-        "name": "Fiksi Remaja"
-      },
-      "totalCopies": 3,
-      "availableCopies": 2,
-      "available": 2,
-      "availability": "Available",
-      "cover": "assets/covers/b14.jpg"
-    },
-    {
-      "id": "BK-000297",
-      "title": "Pendidikan Pancasila dan Kewarganegaraan Kelas XI",
-      "author": "Yusnawan Lubis",
-      "publisher": "Kemendikbudristek",
-      "publicationYear": 2021,
-      "year": 2021,
-      "isbn": "9786022443278",
-      "category": "Umum & Referensi",
-      "description": "Buku teks resmi kurikulum sekolah mengenai penegakan hak asasi manusia, sistem hukum, dan demokrasi Pancasila.",
-      "shelf": {
-        "code": "E-01",
-        "name": "Pendidikan Kewarganegaraan"
-      },
-      "totalCopies": 5,
-      "availableCopies": 5,
-      "available": 5,
-      "availability": "Available",
-      "cover": "assets/covers/b15.jpg"
-    },
-    {
-      "id": "BK-000302",
-      "title": "Bahasa Indonesia Tingkat Lanjut: Cakap Berbahasa",
-      "author": "Maman Suryaman",
-      "publisher": "Kemendikbudristek",
-      "publicationYear": 2022,
-      "year": 2022,
-      "isbn": "9786232669451",
-      "category": "Bahasa & Komunikasi",
-      "description": "Pengembangan kemampuan menulis karya ilmiah, teks editorial, kritik sastra, serta apresiasi drama dan puisi.",
-      "shelf": {
-        "code": "E-02",
-        "name": "Bahasa & Sastra"
-      },
-      "totalCopies": 4,
-      "availableCopies": 3,
-      "available": 3,
-      "availability": "Available",
-      "cover": "assets/covers/b16.jpg"
-    },
-    {
-      "id": "BK-000306",
-      "title": "English in Mind: Student's Book 3",
-      "author": "Herbert Puchta",
-      "publisher": "Cambridge University Press",
-      "publicationYear": 2018,
-      "year": 2018,
-      "isbn": "9780521750646",
-      "category": "Bahasa & Komunikasi",
-      "description": "Buku pengayaan bahasa Inggris untuk siswa menengah atas dengan topik menarik seputar komunikasi global dan budaya.",
-      "shelf": {
-        "code": "E-02",
-        "name": "Bahasa & Sastra"
-      },
-      "totalCopies": 3,
-      "availableCopies": 2,
-      "available": 2,
-      "availability": "Available",
-      "cover": "assets/covers/b17.jpg"
-    },
-    {
-      "id": "BK-000309",
-      "title": "Informatika untuk SMA/MA Kelas X",
-      "author": "Mushthofa",
-      "publisher": "Kemendikbudristek",
-      "publicationYear": 2021,
-      "year": 2021,
-      "isbn": "9786022445036",
-      "category": "Sains & Teknologi",
-      "description": "Membahas berpikir komputasional, teknologi informasi dan komunikasi, sistem komputer, jaringan, dan analisis data sederhana.",
-      "shelf": {
-        "code": "C-03",
-        "name": "Komputer & Informatika"
-      },
-      "totalCopies": 4,
-      "availableCopies": 4,
-      "available": 4,
-      "availability": "Available",
-      "cover": "assets/covers/b18.jpg"
-    },
-    {
-      "id": "BK-000313",
-      "title": "Algoritma dan Pemrograman Dasar dengan Python",
-      "author": "Rinaldi Munir",
-      "publisher": "Informatika",
-      "publicationYear": 2020,
-      "year": 2020,
-      "isbn": "9786237131311",
-      "category": "Sains & Teknologi",
-      "description": "Panduan langkah demi langkah memahami logika pemrograman, struktur percabangan, perulangan, fungsi, dan struktur data.",
-      "shelf": {
-        "code": "C-03",
-        "name": "Komputer & Informatika"
-      },
-      "totalCopies": 3,
-      "availableCopies": 1,
-      "available": 1,
-      "availability": "Limited Availability",
-      "cover": "assets/covers/b19.jpg"
-    },
-    {
-      "id": "BK-000316",
-      "title": "Kamus Besar Bahasa Indonesia (KBBI) Edisi V",
-      "author": "Badan Pengembangan dan Pembinaan Bahasa",
-      "publisher": "Balai Pustaka",
-      "publicationYear": 2016,
-      "year": 2016,
-      "isbn": "9789794071823",
-      "category": "Umum & Referensi",
-      "description": "Rujukan kosakata baku terlengkap bahasa Indonesia. Hanya untuk dibaca di perpustakaan.",
-      "shelf": {
-        "code": "REF-01",
-        "name": "Koleksi Referensi"
-      },
-      "totalCopies": 2,
-      "availableCopies": 2,
-      "available": 2,
-      "availability": "Available",
-      "cover": "assets/covers/b20.jpg"
-    },
-    {
-      "id": "BK-000318",
-      "title": "Ensiklopedi Sains dan Kehidupan (Jilid 1-4)",
-      "author": "Tim Penerbit Tira Pustaka",
-      "publisher": "Tira Pustaka",
-      "publicationYear": 2015,
-      "year": 2015,
-      "isbn": "9789798083945",
-      "category": "Umum & Referensi",
-      "description": "Kumpulan referensi bergambar tentang jagat raya, planet bumi, keanekaragaman flora fauna, dan penemuan manusia.",
-      "shelf": {
-        "code": "REF-01",
-        "name": "Koleksi Referensi"
-      },
-      "totalCopies": 2,
-      "availableCopies": 2,
-      "available": 2,
-      "availability": "Available",
-      "cover": "assets/covers/b21.jpg"
-    },
-    {
-      "id": "BK-000320",
-      "title": "Seni Budaya dan Keterampilan untuk SMA",
-      "author": "Zackaria Soetedja",
-      "publisher": "Kemendikbudristek",
-      "publicationYear": 2018,
-      "year": 2018,
-      "isbn": "9786024271428",
-      "category": "Seni & Olahraga",
-      "description": "Apresiasi seni rupa daerah Kalimantan Barat, seni musik tradisional, seni tari, dan seni teater nusantara.",
-      "shelf": {
-        "code": "F-01",
-        "name": "Seni & Budaya"
-      },
-      "totalCopies": 3,
-      "availableCopies": 3,
-      "available": 3,
-      "availability": "Available",
-      "cover": "assets/covers/b22.jpg"
-    },
-    {
-      "id": "BK-000323",
-      "title": "Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK) SMA",
-      "author": "Muhajir",
-      "publisher": "Erlangga",
-      "publicationYear": 2021,
-      "year": 2021,
-      "isbn": "9786024347895",
-      "category": "Seni & Olahraga",
-      "description": "Pola hidup sehat, teknik permainan bola besar, atletik, kebugaran jasmani, dan pertolongan pertama pada kecelakaan.",
-      "shelf": {
-        "code": "F-02",
-        "name": "Olahraga & Kesehatan"
-      },
-      "totalCopies": 3,
-      "availableCopies": 3,
-      "available": 3,
-      "availability": "Available",
-      "cover": "assets/covers/b23.jpg"
-    },
-    {
-      "id": "BK-000326",
-      "title": "Sebuah Seni untuk Bersikap Bodo Amat",
-      "author": "Mark Manson",
-      "publisher": "Grasindo",
-      "publicationYear": 2018,
-      "year": 2018,
-      "isbn": "9786020512297",
-      "category": "Pengembangan Diri",
-      "description": "Pendekatan realistis tentang memilih hal-hal penting yang pantas dipedulikan dalam hidup tanpa membebani diri sendiri.",
-      "shelf": {
-        "code": "A-01",
-        "name": "Pengembangan Diri"
-      },
-      "totalCopies": 2,
-      "availableCopies": 0,
-      "available": 0,
-      "availability": "Currently Unavailable",
-      "cover": "assets/covers/b24.jpg"
-    },
-    {
-      "id": "BK-000328",
-      "title": "Kearifan Lokal Suku Dayak Bidayuh Sekayam",
-      "author": "Drs. Aloysius Mering",
-      "publisher": "Penerbit Dayakology",
-      "publicationYear": 2017,
-      "year": 2017,
-      "isbn": "9789793144566",
-      "category": "Muatan Lokal",
-      "description": "Dokumentasi adat istiadat, bahasa, tradisi lisan, dan tata kelola alam komunitas adat Dayak Bidayuh di perbatasan Sekayam.",
-      "shelf": {
-        "code": "ML-01",
-        "name": "Muatan Lokal Sekayam"
-      },
-      "totalCopies": 3,
-      "availableCopies": 2,
-      "available": 2,
-      "availability": "Available",
-      "cover": "assets/covers/b25.jpg"
-    }
-  ]
+    "updated_at": "2026-10-21T13:43:35+07:00",
+    "books": [
+        {
+            "id": "BK-000501",
+            "title": "Matematika Tingkat Lanjut SMA/MA Kelas XI",
+            "author": "Al Azhary Masta, Zetra Hainul Putra",
+            "publisher": "Kemendikbudristek RI",
+            "publicationYear": 2023,
+            "year": 2023,
+            "isbn": "9786022448808",
+            "category": "Sains & Matematika",
+            "description": "Buku teks resmi kurikulum merdeka memuat materi trigonometri, matriks, dan kalkulus diferensial untuk jenjang SMA.",
+            "cover": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=600",
+            "shelf": {
+                "code": "C-02",
+                "name": "Rak C2 — Matematika & Statistika"
+            },
+            "totalCopies": 14,
+            "availableCopies": 13,
+            "available": 13,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000502",
+            "title": "Fisika Mekanika dan Termodinamika Dasar",
+            "author": "Prof. Dr. Yohanes Surya",
+            "publisher": "Kandel Press",
+            "publicationYear": 2021,
+            "year": 2021,
+            "isbn": "9786029871104",
+            "category": "Sains & Matematika",
+            "description": "Pendekatan konsep fisika tanpa rumus rumit, berfokus pada penalaran ilmiah dan fenomena alam.",
+            "cover": "assets/covers/bk-000502.webp",
+            "shelf": {
+                "code": "C-01",
+                "name": "Rak C1 — Sains Terapan & Alam"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000503",
+            "title": "Biologi Sel, Metabolisme, dan Genetika Terapan",
+            "author": "Dr. Sri Lestari, M.Si.",
+            "publisher": "Erlangga",
+            "publicationYear": 2022,
+            "year": 2022,
+            "isbn": "9786022987710",
+            "category": "Sains & Matematika",
+            "description": "Studi struktur sel prokariotik dan eukariotik serta materi pewarisan sifat hukum Mendel untuk siswa SMA.",
+            "cover": "assets/covers/bk-000503.webp",
+            "shelf": {
+                "code": "C-01",
+                "name": "Rak C1 — Sains Terapan & Alam"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000504",
+            "title": "Kimia Larutan dan Reaksi Redoks di Lingkungan Sekitar",
+            "author": "Budi Santoso, Ph.D.",
+            "publisher": "Yrama Widya",
+            "publicationYear": 2020,
+            "year": 2020,
+            "isbn": "9786023749010",
+            "category": "Sains & Matematika",
+            "description": "Eksperimen kimia sederhana mengenai asam basa, stoikiometri, dan kinetika reaksi dalam kehidupan sehari-hari.",
+            "cover": "assets/covers/bk-000504.webp",
+            "shelf": {
+                "code": "C-01",
+                "name": "Rak C1 — Sains Terapan & Alam"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000505",
+            "title": "Sejarah Diplomasi dan Revolusi Kemerdekaan Indonesia",
+            "author": "Prof. Dr. Ong Hok Ham",
+            "publisher": "Kompas Gramedia",
+            "publicationYear": 2019,
+            "year": 2019,
+            "isbn": "9789797098801",
+            "category": "Sosial & Sejarah",
+            "description": "Kajian mendalam tentang perundingan Linggarjati, Renville, hingga KMB dalam mempertahankan NKRI.",
+            "cover": "assets/covers/bk-000505.webp",
+            "shelf": {
+                "code": "D-02",
+                "name": "Rak D2 — Sejarah Indonesia & Dunia"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000506",
+            "title": "Sosiologi Masyarakat Pedesaan dan Perbatasan",
+            "author": "Dr. Soerjono Soekanto",
+            "publisher": "Rajawali Pers",
+            "publicationYear": 2021,
+            "year": 2021,
+            "isbn": "9789794210091",
+            "category": "Sosial & Sejarah",
+            "description": "Interaksi sosial dan kearifan lokal masyarakat di wilayah terdepan dan perbatasan Kalimantan.",
+            "cover": "assets/covers/bk-000506.webp",
+            "shelf": {
+                "code": "D-01",
+                "name": "Rak D1 — Sosial & Ekonomi"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000507",
+            "title": "Pengantar Teori Ekonomi Mikro dan Perilaku Konsumen",
+            "author": "Prof. Boediono",
+            "publisher": "BPFE Yogyakarta",
+            "publicationYear": 2018,
+            "year": 2018,
+            "isbn": "9789795030438",
+            "category": "Sosial & Sejarah",
+            "description": "Analisis permintaan, penawaran, elastisitas pasar, dan struktur biaya produksi usaha.",
+            "cover": "assets/covers/bk-000507.webp",
+            "shelf": {
+                "code": "D-01",
+                "name": "Rak D1 — Sosial & Ekonomi"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000508",
+            "title": "Tenggelamnya Kapal Van Der Wijck",
+            "author": "Buya Hamka",
+            "publisher": "Bulan Bintang",
+            "publicationYear": 2017,
+            "year": 2017,
+            "isbn": "9789794180554",
+            "category": "Sastra Indonesia",
+            "description": "Karya sastra klasik tentang cinta Zainuddin dan Hayati yang terhalang oleh adat istiadat kaku Minangkabau.",
+            "cover": "assets/covers/bk-000508.webp",
+            "shelf": {
+                "code": "B-01",
+                "name": "Rak B1 — Sastra Indonesia Klasik"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000509",
+            "title": "Ronggeng Dukuh Paruk",
+            "author": "Ahmad Tohari",
+            "publisher": "Gramedia Pustaka Utama",
+            "publicationYear": 2018,
+            "year": 2018,
+            "isbn": "9789792277289",
+            "category": "Sastra Indonesia",
+            "description": "Trilogi novel tentang kehidupan Srintil dan latar sosial budaya masyarakat pedesaan Jawa tengah abad ke-20.",
+            "cover": "assets/covers/bk-000509.webp",
+            "shelf": {
+                "code": "B-01",
+                "name": "Rak B1 — Sastra Indonesia Klasik"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000510",
+            "title": "Robohnya Surau Kami (Kumpulan Cerpen Pilihan)",
+            "author": "A.A. Navis",
+            "publisher": "Gramedia",
+            "publicationYear": 2020,
+            "year": 2020,
+            "isbn": "9786020302201",
+            "category": "Sastra Indonesia",
+            "description": "Kritik sosial tajam berbalut sindiran moral tentang tanggung jawab keagamaan dan kemanusiaan.",
+            "cover": "assets/covers/bk-000510.webp",
+            "shelf": {
+                "code": "B-01",
+                "name": "Rak B1 — Sastra Indonesia Klasik"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000511",
+            "title": "Layar Terkembang",
+            "author": "Sutan Takdir Alisjahbana",
+            "publisher": "Balai Pustaka",
+            "publicationYear": 2019,
+            "year": 2019,
+            "isbn": "9789794070626",
+            "category": "Sastra Indonesia",
+            "description": "Kisah emansipasi Tuti dan Maria yang menggambarkan pemikiran modern pemuda perintis kemerdekaan.",
+            "cover": "assets/covers/bk-000511.webp",
+            "shelf": {
+                "code": "B-01",
+                "name": "Rak B1 — Sastra Indonesia Klasik"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000512",
+            "title": "Algoritma Pemrograman dan Dasar Berpikir Komputasional",
+            "author": "Rinaldi Munir, Leony Lidya",
+            "publisher": "Informatika Bandung",
+            "publicationYear": 2022,
+            "year": 2022,
+            "isbn": "9786237131236",
+            "category": "Teknologi & Komputer",
+            "description": "Panduan logika pemrograman terstruktur dan perancangan pseudocode untuk menyelesaikan persoalan logika.",
+            "cover": "assets/covers/bk-000512.webp",
+            "shelf": {
+                "code": "E-01",
+                "name": "Rak E1 — Teknologi & Informatika"
+            },
+            "totalCopies": 3,
+            "availableCopies": 2,
+            "available": 2,
+            "availability": "Limited Availability"
+        },
+        {
+            "id": "BK-000513",
+            "title": "Dasar Jaringan Komputer dan Keamanan Informasi",
+            "author": "Onno W. Purbo",
+            "publisher": "Andi Publisher",
+            "publicationYear": 2021,
+            "year": 2021,
+            "isbn": "9789792965414",
+            "category": "Teknologi & Komputer",
+            "description": "Konsep routing, IP addressing IPv4/IPv6, dan cara melindungi data komputer dari ancaman malware.",
+            "cover": "assets/covers/bk-000513.webp",
+            "shelf": {
+                "code": "E-01",
+                "name": "Rak E1 — Teknologi & Informatika"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000514",
+            "title": "Kecerdasan Buatan dan Penerapan Praktis Python",
+            "author": "Dr. Eng. Suyanto",
+            "publisher": "Informatika",
+            "publicationYear": 2023,
+            "year": 2023,
+            "isbn": "9786237131779",
+            "category": "Teknologi & Komputer",
+            "description": "Pengenalan machine learning, neural networks, dan algoritma klasifikasi data untuk tingkat pemula.",
+            "cover": "assets/covers/bk-000514.webp",
+            "shelf": {
+                "code": "E-01",
+                "name": "Rak E1 — Teknologi & Informatika"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000515",
+            "title": "Seni Berpikir Kritis: Menimbang Fakta dan Logika",
+            "author": "Richard Paul, Linda Elder",
+            "publisher": "Pustaka Pelajar",
+            "publicationYear": 2019,
+            "year": 2019,
+            "isbn": "9786022299882",
+            "category": "Filsafat & Psikologi",
+            "description": "Panduan melatih nalar objektif, mengenali sesat pikir (logical fallacies), dan mengambil keputusan matang.",
+            "cover": "assets/covers/bk-000515.webp",
+            "shelf": {
+                "code": "A-02",
+                "name": "Rak A2 — Filsafat & Psikologi"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000516",
+            "title": "Psikologi Komunikasi Interpersonal dan Empati",
+            "author": "Prof. Jalaluddin Rakhmat",
+            "publisher": "Remaja Rosdakarya",
+            "publicationYear": 2021,
+            "year": 2021,
+            "isbn": "9789795140304",
+            "category": "Filsafat & Psikologi",
+            "description": "Membangun komunikasi efektif, mendengarkan secara aktif, dan mengelola konflik antarpribadi.",
+            "cover": "assets/covers/bk-000516.webp",
+            "shelf": {
+                "code": "A-02",
+                "name": "Rak A2 — Filsafat & Psikologi"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000517",
+            "title": "Berani Tidak Disukai: Psikologi Keberanian Adler",
+            "author": "Ichiro Kishimi, Fumitake Koga",
+            "publisher": "Gramedia Pustaka Utama",
+            "publicationYear": 2020,
+            "year": 2020,
+            "isbn": "9786020633213",
+            "category": "Pengembangan Diri",
+            "description": "Dialog filosofis tentang melepaskan trauma masa lalu dan menjalani hidup otentik tanpa takut penilaian orang lain.",
+            "cover": "assets/covers/bk-000517.webp",
+            "shelf": {
+                "code": "A-01",
+                "name": "Rak A1 — Pengembangan Diri & Karakter"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000518",
+            "title": "Mindset: Mengubah Pola Pikir untuk Meraih Sukses",
+            "author": "Carol S. Dweck, Ph.D.",
+            "publisher": "Baca Publisher",
+            "publicationYear": 2021,
+            "year": 2021,
+            "isbn": "9786026486059",
+            "category": "Pengembangan Diri",
+            "description": "Perbedaan mendasar antara Fixed Mindset dan Growth Mindset dalam proses belajar dan ketahanan mental.",
+            "cover": "assets/covers/bk-000518.webp",
+            "shelf": {
+                "code": "A-01",
+                "name": "Rak A1 — Pengembangan Diri & Karakter"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000519",
+            "title": "Grit: Kekuatan Passion dan Kegigihan Belajar",
+            "author": "Angela Duckworth",
+            "publisher": "Gramedia Pustaka Utama",
+            "publicationYear": 2019,
+            "year": 2019,
+            "isbn": "9786020620954",
+            "category": "Pengembangan Diri",
+            "description": "Bukti empiris bahwa ketekunan jangka panjang jauh lebih menentukan keberhasilan dibandingkan bakat bawaan.",
+            "cover": "assets/covers/bk-000519.webp",
+            "shelf": {
+                "code": "A-01",
+                "name": "Rak A1 — Pengembangan Diri & Karakter"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000520",
+            "title": "Kamus Besar Bahasa Indonesia (KBBI) Edisi Kelima",
+            "author": "Badan Pengembangan dan Pembinaan Bahasa",
+            "publisher": "Balai Pustaka",
+            "publicationYear": 2022,
+            "year": 2022,
+            "isbn": "9789794073566",
+            "category": "Bahasa & Kamus",
+            "description": "Rujukan kosakata baku resmi bahasa Indonesia lengkap dengan etimologi dan kelas kata.",
+            "cover": "assets/covers/bk-000520.webp",
+            "shelf": {
+                "code": "F-01",
+                "name": "Rak F1 — Kamus & Ensiklopedia"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000521",
+            "title": "Oxford Learner’s Pocket Dictionary (4th Edition)",
+            "author": "Oxford University Press",
+            "publisher": "Oxford University Press",
+            "publicationYear": 2020,
+            "year": 2020,
+            "isbn": "9780194398725",
+            "category": "Bahasa & Kamus",
+            "description": "Kamus saku bahasa Inggris esensial dengan penjelasan makna ringkas dan pelafalan fonetis.",
+            "cover": "assets/covers/bk-000521.webp",
+            "shelf": {
+                "code": "F-01",
+                "name": "Rak F1 — Kamus & Ensiklopedia"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000522",
+            "title": "Tata Bahasa Baku Bahasa Indonesia Edisi Keempat",
+            "author": "Anton M. Moeliono, dkk.",
+            "publisher": "Badan Bahasa Kemendikbud",
+            "publicationYear": 2021,
+            "year": 2021,
+            "isbn": "9786024372996",
+            "category": "Bahasa & Kamus",
+            "description": "Pedoman komprehensif struktur sintaksis, morfologi kata, dan kaidah kebahasaan Indonesia formal.",
+            "cover": "assets/covers/bk-000522.webp",
+            "shelf": {
+                "code": "F-01",
+                "name": "Rak F1 — Kamus & Ensiklopedia"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000523",
+            "title": "Ensiklopedia Sains dan Teknologi Dunia Visual",
+            "author": "Dorling Kindersley",
+            "publisher": "Erlangga for Kids & Teens",
+            "publicationYear": 2020,
+            "year": 2020,
+            "isbn": "9786022415121",
+            "category": "Ensiklopedia & Referensi",
+            "description": "Ilustrasi detail anatomi bumi, ruang angkasa, energi nuklir, dan penemuan sains terbesar peradaban.",
+            "cover": "assets/covers/bk-000523.webp",
+            "shelf": {
+                "code": "F-01",
+                "name": "Rak F1 — Kamus & Ensiklopedia"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000524",
+            "title": "Atlas Lengkap Geografi Fisik dan Budaya Indonesia",
+            "author": "Badan Informasi Geospasial (BIG)",
+            "publisher": "Erlangga Geospasial",
+            "publicationYear": 2021,
+            "year": 2021,
+            "isbn": "9786022418801",
+            "category": "Ensiklopedia & Referensi",
+            "description": "Peta kontur topografi, batas batas wilayah maritim, flora fauna, dan persebaran sumber daya nasional.",
+            "cover": "assets/covers/bk-000524.webp",
+            "shelf": {
+                "code": "F-01",
+                "name": "Rak F1 — Kamus & Ensiklopedia"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        },
+        {
+            "id": "BK-000525",
+            "title": "Ensiklopedia Adat dan Tradisi Budaya Kalimantan Barat",
+            "author": "Drs. Aloysius Mering, M.Hum.",
+            "publisher": "Pontianak Media Mandiri",
+            "publicationYear": 2022,
+            "year": 2022,
+            "isbn": "9786027389104",
+            "category": "Ensiklopedia & Referensi",
+            "description": "Dokumentasi komprehensif mengenai sejarah lokal Sekayam, Sanggau, dan kearifan masyarakat Dayak serta Melayu Kalbar.",
+            "cover": "assets/covers/bk-000525.webp",
+            "shelf": {
+                "code": "F-01",
+                "name": "Rak F1 — Kamus & Ensiklopedia"
+            },
+            "totalCopies": 3,
+            "availableCopies": 3,
+            "available": 3,
+            "availability": "Available"
+        }
+    ]
 }
