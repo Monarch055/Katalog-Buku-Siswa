@@ -2,13 +2,13 @@
     "metadata": {
         "school": "SMAN 1 Sekayam",
         "schemaVersion": "1.0",
-        "catalogVersion": "2026-11-04T00:04:48+07:00",
-        "generatedAt": "2026-11-04T00:04:48+07:00",
+        "catalogVersion": "2026-11-04T00:07:00+07:00",
+        "generatedAt": "2026-11-04T00:07:00+07:00",
         "totalTitles": 25,
         "totalCopies": 86,
         "availableCopies": 74
     },
-    "updated_at": "2026-11-04T00:04:48+07:00",
+    "updated_at": "2026-11-04T00:07:00+07:00",
     "books": [
         {
             "id": "BK-000501",
