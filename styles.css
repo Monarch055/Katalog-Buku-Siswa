@@ -1,11 +1,11 @@
 /* ==========================================================================
    Design System SMAN 1 Sekayam - Website Katalog Siswa
-   Diturunkan dari DESIGN.md (IT-2023 Design System v5.7)
+   Diturunkan dari DESIGN.md (IT-2023 Design System v6.6, Public mode)
    Kepadatan publik: body 18px (1.125rem), kontrol minimal 48px
    Responsif penuh: 360px (mobile-first) hingga 1200px+ (desktop)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap");
 
 :root {
   /* Palet Warna */
@@ -42,8 +42,8 @@
   --tone-error-text: #c13515;
 
   /* Tipografi */
-  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Lora', Georgia, serif;
+  --font-main: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Lora", Georgia, serif;
 
   /* Radius Sudut */
   --radius-sm: 4px;
@@ -64,7 +64,9 @@
 }
 
 /* Reset Dasar */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -82,7 +84,8 @@ body {
   font-size: 1.125rem; /* 18px body default sesuai DESIGN.md */
   line-height: 1.6;
   color: var(--body);
-  background-color: var(--background);
+  /* Halaman di atas canvas supaya kartu putih terbaca sebagai objek, seperti halaman publik surat-menyurat. */
+  background-color: var(--canvas);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -96,18 +99,54 @@ body {
 }
 
 /* Tipografi Skala */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--heading);
   line-height: 1.25;
 }
 
-.text-xs { font-size: 0.875rem; line-height: 1.5; } /* 14px minimum */
-.text-sm { font-size: 1rem; line-height: 1.5; }     /* 16px */
-.text-base { font-size: 1.125rem; line-height: 1.6; } /* 18px */
-.text-lg { font-size: 1.25rem; line-height: 1.4; font-weight: 600; }
-.text-xl { font-size: 1.375rem; line-height: 1.4; }
-.text-2xl { font-size: 1.5rem; line-height: 1.3; font-weight: 600; }
-.text-3xl { font-size: 2rem; line-height: 1.2; font-weight: 700; letter-spacing: -0.015em; }
+.text-xs {
+  font-size: 0.875rem;
+  line-height: 1.5;
+} /* 14px minimum */
+.text-sm {
+  font-size: 1rem;
+  line-height: 1.5;
+} /* 16px */
+.text-base {
+  font-size: 1.125rem;
+  line-height: 1.6;
+} /* 18px */
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.text-3xl {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+/* Tanpa huruf tebal (IT-2023 v6.6): bawaan browser untuk <strong> adalah 700. */
+strong,
+b {
+  font-weight: 600;
+}
 
 .font-serif {
   font-family: var(--font-serif);
@@ -146,7 +185,7 @@ h1, h2, h3, h4, h5, h6 {
   position: sticky;
   top: 0;
   z-index: 30;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255 255 255 / 0.82);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--hairline);
@@ -176,20 +215,15 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 0;
 }
 
-.brand-icon {
+.brand-logo {
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: var(--radius-lg);
-  background-color: var(--primary);
-  color: var(--on-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
-  .brand-icon {
+  .brand-logo {
     width: 2.75rem;
     height: 2.75rem;
   }
@@ -201,7 +235,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-text h1 {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--heading);
   line-height: 1.2;
   white-space: nowrap;
@@ -264,6 +298,25 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@media (max-width: 639px) {
+  .badge-public {
+    display: none;
+  }
+}
+
+/* Tombol "Cara pinjam" di header: berlabel, bukan ikon saja (ikon tidak menggantikan kata di Public). */
+.btn-header {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .btn-header {
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
 /* Hero Section */
 .hero-section {
   padding: 1.75rem 0 1.25rem;
@@ -323,7 +376,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Pita Statistik Responsif */
 .stats-band {
-  background-color: var(--canvas);
+  background-color: var(--background);
   border-radius: var(--radius-xl);
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -364,7 +417,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .stat-number {
   font-size: 1.375rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--heading);
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
@@ -481,7 +534,9 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  transition: background-color var(--duration-hover) var(--ease-out), transform var(--duration-press) var(--ease-out);
+  transition:
+    background-color var(--duration-hover) var(--ease-out),
+    transform var(--duration-press) var(--ease-out);
 }
 
 @media (min-width: 640px) {
@@ -619,8 +674,9 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.875rem;
   text-align: left;
   cursor: pointer;
-  transition: background-color var(--duration-hover) var(--ease-out),
-              border-color var(--duration-hover) var(--ease-out);
+  transition:
+    background-color var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out);
 }
 
 @media (min-width: 640px) {
@@ -675,9 +731,10 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   transform: translateY(-4px) scale(0.98);
   transform-origin: top left;
-  transition: opacity 160ms var(--ease-out),
-              transform 160ms var(--ease-out),
-              visibility 0s 160ms;
+  transition:
+    opacity 160ms var(--ease-out),
+    transform 160ms var(--ease-out),
+    visibility 0s 160ms;
 }
 
 /* Di HP scrollbar bawaan menempel di tepi dan memotong sudut bulat, jadi digambar sendiri:
@@ -710,8 +767,9 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
   opacity: 1;
   transform: none;
-  transition: opacity 200ms var(--ease-out),
-              transform 200ms var(--ease-out);
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out);
 }
 
 .dropdown-option {
@@ -784,9 +842,10 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: background-color var(--duration-hover) var(--ease-out),
-              border-color var(--duration-hover) var(--ease-out),
-              color var(--duration-hover) var(--ease-out);
+  transition:
+    background-color var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out),
+    color var(--duration-hover) var(--ease-out);
   user-select: none;
 }
 
@@ -827,17 +886,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--on-primary);
 }
 
-.filter-chip-toggle.active {
-  background-color: var(--secondary-soft);
-  border-color: var(--secondary);
-  color: var(--secondary);
-  font-weight: 600;
-}
-
-.filter-chip-toggle.active svg {
-  color: var(--secondary);
-}
-
 /* Opsi Baris Kedua */
 .filter-row-options {
   display: flex;
@@ -859,6 +907,17 @@ h1, h2, h3, h4, h5, h6 {
   .shelf-select {
     width: 100%;
   }
+}
+
+.filter-chip-toggle.active {
+  background-color: var(--secondary-soft);
+  border-color: var(--secondary);
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.filter-chip-toggle.active svg {
+  color: var(--secondary);
 }
 
 .shelf-select {
@@ -1013,6 +1072,100 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--muted);
 }
 
+/* Header situs menempel, jadi gulir ke hasil berhenti di bawahnya. */
+#hasil-katalog {
+  scroll-margin-top: 5rem;
+}
+
+.results-count:focus {
+  outline: none;
+}
+
+/* Halaman hasil. Berpindah halaman instan, tanpa animasi. */
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.pagination[hidden] {
+  display: none;
+}
+
+.pagination-status {
+  font-size: 0.875rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pagination-controls > .btn {
+  flex: 1;
+}
+
+.page-numbers {
+  display: none;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .pagination {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pagination-controls > .btn {
+    flex: none;
+  }
+  .page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+
+.page-number {
+  min-width: 3rem;
+  padding: 0.5rem;
+  background-color: var(--background);
+  border: 1px solid var(--hairline);
+  color: var(--heading);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.page-number:hover {
+  border-color: var(--primary);
+}
+
+/* Halaman yang sedang dibuka: isi lembut + border navy, bukan warna saja (ada aria-current). */
+.page-number[aria-current="page"] {
+  background-color: var(--primary-soft);
+  border-color: var(--primary);
+  font-weight: 600;
+}
+
+.page-gap {
+  min-width: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.btn:disabled,
+.btn:disabled:hover {
+  background-color: var(--surface-strong);
+  border-color: transparent;
+  color: var(--disabled-text);
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* Grid Kartu Buku Responsif */
 .books-grid {
   display: grid;
@@ -1046,7 +1199,9 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   justify-content: space-between;
   min-width: 0;
-  transition: border-color var(--duration-hover) var(--ease-out), box-shadow var(--duration-hover) var(--ease-out);
+  transition:
+    border-color var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
 }
 
 @media (min-width: 640px) {
@@ -1083,8 +1238,12 @@ h1, h2, h3, h4, h5, h6 {
   width: 136px;
   height: 204px;
   border-radius: var(--radius-md);
-  box-shadow: -4px 6px 14px rgba(15, 23, 42, 0.16), -1px 2px 4px rgba(15, 23, 42, 0.08);
-  transition: transform var(--duration-hover) var(--ease-out), box-shadow var(--duration-hover) var(--ease-out);
+  box-shadow:
+    -4px 6px 14px rgba(15, 23, 42, 0.16),
+    -1px 2px 4px rgba(15, 23, 42, 0.08);
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
   overflow: hidden;
   background-color: var(--surface);
   flex-shrink: 0;
@@ -1099,7 +1258,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .book-card:hover .card-cover-wrapper {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: -6px 10px 22px rgba(15, 23, 42, 0.22), -2px 3px 6px rgba(15, 23, 42, 0.1);
+  box-shadow:
+    -6px 10px 22px rgba(15, 23, 42, 0.22),
+    -2px 3px 6px rgba(15, 23, 42, 0.1);
 }
 
 .card-cover-image {
@@ -1130,12 +1291,12 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   bottom: 0;
   width: 8px;
-  background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(255,255,255,0.15) 40%, rgba(0,0,0,0.1) 100%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.15) 40%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 .fallback-cat {
   font-size: 0.625rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   color: #93c5fd;
   letter-spacing: 0.05em;
@@ -1144,7 +1305,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .fallback-title {
   font-size: 0.8125rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.25;
   color: #ffffff;
   display: -webkit-box;
@@ -1319,10 +1480,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color var(--duration-hover) var(--ease-out),
-              border-color var(--duration-hover) var(--ease-out),
-              color var(--duration-hover) var(--ease-out),
-              transform var(--duration-press) var(--ease-out);
+  transition:
+    background-color var(--duration-hover) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out),
+    color var(--duration-hover) var(--ease-out),
+    transform var(--duration-press) var(--ease-out);
 }
 
 @media (min-width: 640px) {
@@ -1375,7 +1537,7 @@ h1, h2, h3, h4, h5, h6 {
 .empty-state {
   text-align: center;
   padding: 2.5rem 1rem;
-  background-color: var(--canvas);
+  background-color: var(--background);
   border-radius: var(--radius-xl);
   border: 1px solid var(--hairline);
   margin-bottom: 2.5rem;
@@ -1431,586 +1593,138 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ==========================================================================
-   Komponen Navigasi Halaman (Pagination) — 10 Buku per Halaman
-   ========================================================================== */
-.pagination-nav {
+/* Cara pinjam singkat di atas hasil */
+.howto {
+  background-color: var(--background);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  padding: 1rem 1.25rem 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.howto-head {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1.25rem;
-  margin-top: 2.5rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--hairline);
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.5rem;
 }
 
-@media (min-width: 640px) {
-  .pagination-nav {
-    flex-direction: row;
-    margin-top: 3rem;
-  }
-}
-
-.pagination-info {
-  font-size: 0.875rem;
-  color: var(--muted);
-}
-
-.pagination-info strong {
-  color: var(--heading);
-  font-weight: 600;
-}
-
-.pagination-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.pagination-pages {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-}
-
-.btn-page {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  height: 44px;
-  padding: 0 0.75rem;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--hairline);
-  background-color: var(--background);
-  color: var(--body);
-  cursor: pointer;
-  user-select: none;
-  transition: all var(--duration-hover) var(--ease-out);
-}
-
-.btn-page:hover:not(:disabled):not(.active) {
-  background-color: var(--secondary-soft);
-  color: var(--secondary);
-  border-color: rgba(43, 96, 50, 0.35);
-}
-
-.btn-page:active:not(:disabled) {
-  transform: scale(0.96);
-}
-
-.btn-page.active {
-  background-color: var(--secondary);
-  color: var(--on-secondary);
-  border-color: var(--secondary);
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(43, 96, 50, 0.35);
-}
-
-.btn-page:disabled {
-  opacity: 0.38;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.btn-page-nav {
-  gap: 0.375rem;
-  padding: 0 1rem;
-  font-weight: 600;
-}
-
-.btn-page-nav svg {
-  flex-shrink: 0;
-}
-
-.pagination-ellipsis {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 44px;
-  color: var(--muted);
-  font-weight: 700;
-  user-select: none;
-}
-
-/* ==========================================================================
-   Tombol Aksi Melayang (Floating Action Buttons: Top Scroll & Panduan ?)
-   ========================================================================== */
-/* Sembunyikan elemen melayang saat dialog modal terbuka agar tidak menutupi tombol Tutup */
-body.modal-open .btn-scroll-top,
-body.modal-open .guide-floating-wrap,
-body.modal-open .floating-actions {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transform: scale(0.85) !important;
-  transition: opacity 0.2s var(--ease-out), visibility 0.2s, transform 0.2s;
-}
-
-/* Tombol Kembali ke Atas (Auto Scroll to Top) */
-.btn-scroll-top {
-  position: fixed;
-  bottom: 5.5rem;
-  right: 1.25rem;
-  z-index: 85;
-  pointer-events: auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-full);
-  background-color: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px) saturate(180%);
-  border: 1px solid var(--hairline);
-  color: var(--heading);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(14px) scale(0.85);
-  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out), visibility 0.25s, background-color 0.15s, border-color 0.15s;
-  user-select: none;
-}
-
-@media (min-width: 640px) {
-  .btn-scroll-top {
-    bottom: 5.75rem;
-    right: 2rem;
-  }
-}
-
-.btn-scroll-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-.btn-scroll-top:hover {
-  background-color: var(--secondary-soft);
-  color: var(--secondary);
-  border-color: var(--secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(43, 96, 50, 0.25);
-}
-
-.btn-scroll-top:active {
-  transform: scale(0.94);
-}
-
-/* Kontainer Tombol Panduan Melayang (Dapat Digeser Bebas / Draggable) */
-.guide-floating-wrap {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.25rem;
-  z-index: 90;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.75rem;
-  user-select: none;
-  touch-action: none;
-}
-
-@media (min-width: 640px) {
-  .guide-floating-wrap {
-    bottom: 2rem;
-    right: 2rem;
-    gap: 1rem;
-  }
-}
-
-.guide-floating-wrap.is-dragging {
-  cursor: grabbing !important;
-}
-
-.guide-floating-wrap.is-dragging .btn-floating-guide {
-  cursor: grabbing !important;
-  transform: scale(1.08) !important;
-  box-shadow: 0 14px 36px rgba(43, 96, 50, 0.55), 0 4px 12px rgba(0, 0, 0, 0.22) !important;
-  transition: none !important;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* Balon Penjelas Cue Popover (Membantu siswa mengenali tombol panduan ?) */
-.guide-cue {
-  pointer-events: auto;
-  position: relative;
-  display: none;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--primary);
-  border: 1.5px solid var(--secondary);
-  color: #ffffff;
-  padding: 0.5rem 0.875rem;
-  border-radius: var(--radius-xl);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  box-shadow: 0 8px 24px rgba(23, 33, 70, 0.35);
-  cursor: pointer;
-  animation: cueBounce 0.4s var(--ease-out);
-  max-width: 270px;
-}
-
-.guide-cue.show {
-  display: flex;
-}
-
-.guide-cue-content {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-}
-
-.guide-cue-icon {
-  font-size: 1rem;
-}
-
-.guide-cue-text {
-  line-height: 1.3;
-}
-
-.guide-cue-close {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.75rem;
-  cursor: pointer;
-  padding: 0.25rem;
-  margin-left: 0.25rem;
-  border-radius: 4px;
-}
-
-.guide-cue-close:hover {
-  color: #ffffff;
-}
-
-.guide-cue-arrow {
-  position: absolute;
-  bottom: -6px;
-  right: 28px;
-  width: 12px;
-  height: 12px;
-  background-color: var(--primary);
-  border-right: 1.5px solid var(--secondary);
-  border-bottom: 1.5px solid var(--secondary);
-  transform: rotate(45deg);
-  border-radius: 2px;
-}
-
-@keyframes cueBounce {
-  0% { opacity: 0; transform: translateY(8px) scale(0.95); }
-  60% { transform: translateY(-3px) scale(1.02); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* Tombol Panduan Siswa (?) — POP dengan Secondary Hijau Daun (#2b6032) */
-.btn-floating-guide {
-  pointer-events: auto;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.625rem;
-  height: 52px;
-  padding: 0 1.25rem 0 0.5rem;
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-hover) 100%);
-  color: var(--on-secondary);
-  border: 2px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 6px 22px rgba(43, 96, 50, 0.45), 0 2px 6px rgba(0, 0, 0, 0.12);
-  cursor: grab;
-  user-select: none;
-  touch-action: none;
-  transition: width 0.3s var(--ease-out), padding 0.3s var(--ease-out), transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), filter 0.2s;
-}
-
-.btn-floating-guide:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 28px rgba(43, 96, 50, 0.55), 0 3px 8px rgba(0, 0, 0, 0.15);
-  filter: brightness(1.05);
-}
-
-.btn-floating-guide:active {
-  transform: scale(0.96);
-}
-
-.guide-btn-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  min-width: 38px;
-  border-radius: var(--radius-full);
-  background-color: #ffffff;
-  color: var(--secondary);
-  font-weight: 800;
+.howto-title {
   font-size: 1.125rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
-  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--heading);
 }
 
-.guide-btn-label {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  max-width: 160px;
-  opacity: 1;
-  overflow: hidden;
-  transition: max-width 0.28s var(--ease-out), opacity 0.2s var(--ease-out), margin 0.28s var(--ease-out);
+.howto-steps {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  font-size: 1rem;
+  color: var(--body);
 }
 
-/* Mode Ringkas / Collapsed (Hanya simbol '?' setelah ditekan sekali) */
-.btn-floating-guide.collapsed {
-  padding: 0;
-  width: 52px;
-  height: 52px;
-  min-width: 52px;
-  justify-content: center;
-  gap: 0;
+.howto-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
-.btn-floating-guide.collapsed .guide-btn-label {
-  max-width: 0;
-  opacity: 0;
-  margin: 0;
-}
-
-/* Pada Desktop dengan mouse: tetap bisa mengembang saat di-hover */
-@media (hover: hover) and (pointer: fine) {
-  .btn-floating-guide.collapsed:hover {
-    padding: 0 1.25rem 0 0.5rem;
-    width: auto;
-    min-width: 52px;
-    gap: 0.625rem;
-  }
-
-  .btn-floating-guide.collapsed:hover .guide-btn-label {
-    max-width: 160px;
-    opacity: 1;
-    margin-right: 0.25rem;
+@media (min-width: 768px) {
+  .howto-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 }
 
-/* Lingkaran Berdenyut Lembut di Belakang Tombol Panduan */
-.guide-btn-pulse {
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--secondary);
-  opacity: 0;
-  pointer-events: none;
-  animation: guidePulse 3.5s infinite;
-}
-
-@keyframes guidePulse {
-  0% { transform: scale(0.96); opacity: 0.7; }
-  45% { transform: scale(1.15); opacity: 0; }
-  100% { transform: scale(1.15); opacity: 0; }
-}
-
-/* ==========================================================================
-   Modal Dialog Panduan Siswa (Improved, Friendly, & Clean)
-   ========================================================================== */
-.guide-modal-container {
-  max-width: 680px;
-}
-
-.guide-category-badge {
+/* Nomor langkah: lingkaran navy lembut, dipakai di strip dan di dialog panduan. */
+.step-num {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--secondary);
-  background-color: var(--secondary-soft);
-  padding: 0.25rem 0.625rem;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: var(--radius-full);
-  margin-bottom: 0.375rem;
+  background-color: var(--primary-soft);
+  color: var(--heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
-.guide-modal-body {
+/* Tautan yang membuka sesuatu di halaman ini (bukan pindah halaman), tetap 44px untuk jari. */
+.link-button {
+  min-height: 2.75rem;
+  padding: 0 0.125rem;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Dialog panduan lengkap */
+@media (min-width: 640px) {
+  .modal-container-narrow {
+    max-width: 560px;
+  }
+}
+
+.guide-steps {
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-}
-
-.guide-lead-text {
   font-size: 1rem;
   color: var(--body);
-  line-height: 1.6;
 }
 
-.guide-steps-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-}
-
-.guide-step-card {
+.guide-steps li {
   display: flex;
   align-items: flex-start;
   gap: 0.875rem;
-  background-color: var(--canvas);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-xl);
-  padding: 0.875rem 1rem;
-  transition: background-color 0.15s, border-color 0.15s;
-}
-
-.guide-step-card:hover {
-  background-color: #ffffff;
-  border-color: rgba(43, 96, 50, 0.35);
-}
-
-.guide-step-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  border-radius: var(--radius-full);
-  background-color: var(--secondary);
-  color: var(--on-secondary);
-  font-weight: 700;
-  font-size: 0.9375rem;
-  box-shadow: 0 2px 6px rgba(43, 96, 50, 0.3);
-  margin-top: 0.125rem;
-}
-
-.guide-step-body {
-  flex: 1;
 }
 
 .guide-step-title {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
+  line-height: 1.4;
   color: var(--heading);
-  margin-bottom: 0.25rem;
-}
-
-.guide-step-desc {
-  font-size: 0.875rem;
-  color: var(--body);
-  line-height: 1.5;
-}
-
-.text-secondary {
-  color: var(--secondary);
-}
-
-.shelf-inline-code {
-  font-family: monospace;
-  font-size: 0.875rem;
-  font-weight: 600;
-  background-color: var(--secondary-soft);
-  color: var(--secondary);
-  padding: 0.125rem 0.375rem;
-  border-radius: 4px;
-  border: 1px solid rgba(43, 96, 50, 0.2);
-}
-
-/* Kartu Ringkasan Aturan Penting */
-.guide-rules-card {
-  background-color: var(--secondary-soft);
-  border: 1px solid rgba(43, 96, 50, 0.25);
-  border-radius: var(--radius-xl);
-  padding: 1rem 1.25rem;
-}
-
-.guide-rules-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--secondary);
-  margin-bottom: 0.75rem;
-}
-
-.guide-rules-header h4 {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--secondary);
-}
-
-.guide-rules-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.625rem;
-}
-
-@media (min-width: 480px) {
-  .guide-rules-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.guide-rule-item {
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: var(--radius-md);
-  padding: 0.625rem 0.75rem;
-  border: 1px solid rgba(43, 96, 50, 0.15);
-}
-
-.guide-rule-badge {
-  display: inline-block;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--secondary);
   margin-bottom: 0.125rem;
 }
 
-.guide-rule-item p {
-  font-size: 0.8125rem;
+/* Durasi dan denda di bawah langkah panduan */
+.guide-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--hairline);
+  font-size: 1rem;
   color: var(--body);
-  line-height: 1.4;
 }
 
-/* Tombol Sekunder (#2b6032) */
-.btn-secondary {
-  background-color: var(--secondary);
-  color: var(--on-secondary);
-  border: 1px solid var(--secondary);
+.guide-rules dt {
   font-weight: 600;
+  color: var(--heading);
 }
 
-.btn-secondary:hover {
-  background-color: var(--secondary-hover);
-  border-color: var(--secondary-hover);
-}
-
-.btn-secondary:active {
-  background-color: #1b4021;
-}
-
-@media (max-width: 639px) {
-  .btn-block-mobile {
-    width: 100%;
+@media (min-width: 640px) {
+  .guide-rules div {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 1rem;
   }
 }
 
@@ -2024,16 +1738,107 @@ body.modal-open .floating-actions {
   color: var(--muted);
 }
 
-@media (max-width: 639px) {
-  .site-footer {
-    padding-bottom: 5.5rem;
-  }
-}
-
 @media (min-width: 640px) {
   .site-footer {
     padding: 2rem 0;
     font-size: 0.9375rem;
+  }
+}
+
+.footer-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sponsor-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.sponsor-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.sponsor-marquee {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.sponsor-track {
+  display: flex;
+  width: max-content;
+  animation: sponsor-marquee 28s linear infinite;
+}
+
+.sponsor-group {
+  display: flex;
+  align-items: center;
+  gap: 2.75rem;
+  padding-right: 2.75rem;
+  flex-shrink: 0;
+}
+
+.sponsor-logo {
+  height: 2.5rem;
+  width: auto;
+  max-width: 8rem;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 0.88;
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 180ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sponsor-marquee:hover .sponsor-track {
+    animation-play-state: paused;
+  }
+
+  .sponsor-logo:hover {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes sponsor-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .sponsor-track {
+    animation: none;
+    width: 100%;
+  }
+
+  .sponsor-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem 2rem;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .sponsor-group[aria-hidden="true"] {
+    display: none;
   }
 }
 
@@ -2052,11 +1857,36 @@ body.modal-open .floating-actions {
   }
 }
 
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-logo {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .footer-meta {
+    text-align: right;
+  }
+}
+
 /* Modal Dialog */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 50;
   background-color: rgba(23, 33, 70, 0.45); /* Navy 40% scrim */
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -2066,7 +1896,10 @@ body.modal-open .floating-actions {
   padding: 0.75rem;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--duration-modal) var(--ease-out), visibility var(--duration-modal) var(--ease-out);
+  /* Saat menutup, sembunyi setelah selesai memudar. */
+  transition:
+    opacity var(--duration-modal) var(--ease-out),
+    visibility 0s linear var(--duration-modal);
 }
 
 @media (min-width: 640px) {
@@ -2075,9 +1908,13 @@ body.modal-open .floating-actions {
   }
 }
 
+/* Saat membuka, langsung terlihat supaya fokus bisa masuk ke tombol tutup. */
 .modal-overlay.open {
   opacity: 1;
   visibility: visible;
+  transition:
+    opacity var(--duration-modal) var(--ease-out),
+    visibility 0s;
 }
 
 .modal-container {
@@ -2123,7 +1960,7 @@ body.modal-open .floating-actions {
 
 .modal-title {
   font-size: 1.1875rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--heading);
   line-height: 1.3;
   word-break: break-word;
@@ -2146,7 +1983,9 @@ body.modal-open .floating-actions {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: color var(--duration-hover) var(--ease-out), background-color var(--duration-hover) var(--ease-out);
+  transition:
+    color var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out);
 }
 
 .modal-close-btn:hover {
@@ -2192,7 +2031,9 @@ body.modal-open .floating-actions {
   width: 170px;
   height: 255px;
   border-radius: var(--radius-lg);
-  box-shadow: -6px 10px 24px rgba(15, 23, 42, 0.2), -2px 3px 6px rgba(15, 23, 42, 0.1);
+  box-shadow:
+    -6px 10px 24px rgba(15, 23, 42, 0.2),
+    -2px 3px 6px rgba(15, 23, 42, 0.1);
   overflow: hidden;
   background-color: var(--surface);
   flex-shrink: 0;
@@ -2336,10 +2177,21 @@ body.modal-open .floating-actions {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Satu material: bar atas menjadi solid bila pengguna mengurangi transparansi atau meminta kontras tinggi. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .site-header {
+    background-color: var(--background);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
